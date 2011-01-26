@@ -1,10 +1,5 @@
 " vimrc
-" 
-" Copyright (c) 2011 Shinpei Okamura
-"
-" Licensed under the MIT license.
-" http://www.opensource.org/licenses/mit-license.php
-"
+" まだまだ寄せ集め
 
 " 基本設定 {{{
 syntax on
