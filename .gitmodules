@@ -1,0 +1,39 @@
+[submodule "bundle/git-vim"]
+	path = bundle/git-vim
+	url = git://github.com/Shougo/git-vim.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule "bundle/unite"]
+	path = bundle/unite
+	url = git://github.com/Shougo/unite.vim.git
+[submodule "bundle/unite-alias"]
+	path = bundle/unite-alias
+	url = git://github.com/tacroe/unite-alias.git
+[submodule "bundle/unite-grep"]
+	path = bundle/unite-grep
+	url = git://github.com/Sixeight/unite-grep.git
+[submodule "bundle/unite-outline"]
+	path = bundle/unite-outline
+	url = git://github.com/h1mesuke/unite-outline.git
+[submodule "unite-qf"]
+	path = unite-qf
+	url = git://github.com/sgur/unite-qf.git
+[submodule "bundle/vimfiler"]
+	path = bundle/vimfiler
+	url = git://github.com/Shougo/vimfiler.git
+[submodule "bundle/vim-localrc"]
+	path = bundle/vim-localrc
+	url = git://github.com/thinca/vim-localrc.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule "bundle/vim-textobj-indent"]
+	path = bundle/vim-textobj-indent
+	url = git://github.com/kana/vim-textobj-indent.git

@@ -1,5 +1,20 @@
 " vimrc
-" まだまだ寄せ集め
+" 
+" Copyright (c) 2011 Shinpei Okamura
+"
+" Licensed under the MIT license.
+" http://www.opensource.org/licenses/mit-license.php
+"
+
+" 初期化 {{{
+let $LANG = "ja_JP.UTF-8"
+set encoding=utf-8
+
+" augroupの設定
+aug MyAutoCmd
+    au!
+aug END
+" }}}
 
 " 基本設定 {{{
 syntax on
@@ -29,6 +44,7 @@ set backspace=indent,eol,start
 set showmatch
 set wrapscan
 set wildmenu
+set tags=tags;
 set formatoptions&
 set formatoptions+=mM
 let format_allow_over_tw = 1
@@ -49,6 +65,9 @@ set showcmd
 set title
 set winwidth=30
 set winminwidth=30
+if &term == 'screen'
+    let &t_Co=256
+endif
 " }}}
 
 " 折りたたみ {{{
@@ -96,8 +115,6 @@ nnoremap tl :<C-u>tags<CR>
 " ウィンドウ移動
 noremap sj <C-w>j
 noremap sk <C-w>k
-"noremap <silent> sh <C-w>h:call <SID>good_width()<CR>
-"noremap <silent> sl <C-w>l:call <SID>good_width()<CR>
 noremap sh <C-w>h
 noremap sl <C-w>l
 noremap sc <C-w>c
@@ -106,8 +123,6 @@ noremap sv <C-w>v
 noremap ss <C-w>s
 noremap sJ <C-w>J
 noremap sK <C-w>K
-"noremap <silent> sH <C-w>H:call <SID>good_width()<CR>
-"noremap <silent> sL <C-w>L:call <SID>good_width()<CR>
 noremap sH <C-w>H
 noremap sL <C-w>L
 
@@ -142,10 +157,6 @@ if !has('gui_running') && has('xterm_clipboard')
     set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
 endif
 
-" augroupの設定
-aug MyAutoCmd
-    au!
-aug END
 
 " バッファ表示時にカレントディレクトリ設定
 au MyAutoCmd BufEnter * execute ":lcd " . expand("%:p:h")
@@ -177,13 +188,11 @@ endfunction
 set mouse=a
 set nomousefocus
 set nomousehide
-
 " }}}
 
 " エンコーディングの設定 {{{
 " ずんWiki
 " http://www.kawaz.jp/pukiwiki/?vim
-
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -249,7 +258,6 @@ if has('kaoriya')
     set fileencodings=guess
   endif
 endif
-
 " }}}
 
 " プラグイン {{{
@@ -257,7 +265,6 @@ endif
 call pathogen#runtime_append_all_bundles()
 
 " NeoComplCache {{{
-
 " NeoComplCacheを起動時に有効にする
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
@@ -281,7 +288,7 @@ inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " スニペットの配置
-let g:neocomplcache_snippets_dir = expand('~/.vim/snippets')
+let g:neocomplcache_snippets_dir = '~/vimfiles/snippets'
 
 " スニペットを展開
 imap <expr><TAB> neocomplcache#plugin#snippets_complete#expandable() ? "\(neocomplcache_snippets_expand)" : "\<TAB>"
@@ -292,7 +299,7 @@ smap <TAB> (neocomplcache_snippets_expand)
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -307,7 +314,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -318,7 +324,7 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " }}}
 
 " Taglist {{{
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
 let Tlist_WinWidth = 40
 let Tlist_Auto_Open = 1
 let Tlist_Compact_Format = 1
@@ -335,29 +341,59 @@ let g:unite_enable_start_insert = 0
 "nnoremap [unite]
 nmap ' [unite]
 noremap [unite]u :Unite
-nnoremap [unite]' :Unite buffer file_mru file<CR>
+nnoremap [unite]' :Unite buffer file<CR>
+nnoremap [unite]t :Unite tab<CR>
+nnoremap [unite]m :Unite file_mru<CR>
+nnoremap [unite]o :Unite outline<CR>
+nnoremap [unite]q :Unite qf -no-quit<CR>
 
 let g:unite_source_file_mru_limit = 100
 " }}}
 
 " VimFiler {{{
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_trashbox_directory = expand("~/.trashbox")
+let g:vimfiler_trashbox_directory = expand("~/.vimfiler_trashbox")
+" }}}
+
+" Git-Vim {{{
+if !has('unix')
+    let g:git_bin = "c:/tools/git/bin/git.exe"
+endif
+let g:git_command_edit = "rightbelow vnew"
+" }}}
+
+" NERD Commenter {{{
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+nmap <Space>/ <Plug>NERDCommenterToggle
+nmap <Space>/a <Plug>NERDCommenterAppend
+vmap <Space>/ <Plug>NERDCommenterToggle
+vmap <Space>/s <Plug>NERDCommenterSexy
+vmap <Space>/b <Plug>NERDCommenterMinimal
 " }}}
 " }}}
 
 " ファイルタイプ {{{
 " Java {{{
-"au MyAutoCmd BufNew,BufEnter *.java set tags+=~/vimfiles/tags/java.tags
-"au MyAutoCmd BufDelete,BufLeave *.java set tags-="~/vimfiles/tags/java.tags"
+au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
+au MyAutoCmd BufNew,BufEnter *.java set tags+=c:\Users\Solar\tags\java.tags
+au MyAutoCmd BufDelete,BufLeave *.java set tags-=c:\Users\Solar\tags\java.tags
 " }}}
 
 " PHP {{{
+au MyAutoCmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " }}}
 
 " Python {{{
+au MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
+" }}}
+
+" その他 {{{
+autocmd MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " }}}
 " }}}
 
