@@ -19,9 +19,6 @@
 [submodule "bundle/unite-outline"]
 	path = bundle/unite-outline
 	url = git://github.com/h1mesuke/unite-outline.git
-[submodule "unite-qf"]
-	path = unite-qf
-	url = git://github.com/sgur/unite-qf.git
 [submodule "bundle/vimfiler"]
 	path = bundle/vimfiler
 	url = git://github.com/Shougo/vimfiler.git
@@ -37,3 +34,6 @@
 [submodule "bundle/vim-textobj-indent"]
 	path = bundle/vim-textobj-indent
 	url = git://github.com/kana/vim-textobj-indent.git
+[submodule "bundle/unite-qf"]
+	path = bundle/unite-qf
+	url = git://github.com/sgur/unite-qf.git
