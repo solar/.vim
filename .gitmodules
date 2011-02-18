@@ -40,3 +40,6 @@
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
+[submodule "bundle/unite-mark"]
+	path = bundle/unite-mark
+	url = git://github.com/tacroe/unite-mark.git
