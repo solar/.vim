@@ -37,3 +37,6 @@
 [submodule "bundle/git-vim"]
 	path = bundle/git-vim
 	url = git://github.com/Shougo/git-vim.git
+[submodule "bundle/unite-mark"]
+	path = bundle/unite-mark
+	url = git://github.com/tacroe/unite-mark.git
