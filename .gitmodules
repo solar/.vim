@@ -34,9 +34,6 @@
 [submodule "bundle/unite-qf"]
 	path = bundle/unite-qf
 	url = git://github.com/sgur/unite-qf.git
-[submodule "bundle/git-vim"]
-	path = bundle/git-vim
-	url = git://github.com/Shougo/git-vim.git
 [submodule "bundle/unite-mark"]
 	path = bundle/unite-mark
 	url = git://github.com/tacroe/unite-mark.git
