@@ -1,0 +1,57 @@
+# Xml element
+snippet <xml
+abbr    <?xml ?> element
+prev_word   '^'
+	<?xml version="1.0" encoding="utf-8"?>
+
+# Android Button
+snippet <Button
+abbr    Android <Button /> element
+prev_word   '^'
+	<Button android:id="@+id/${1:id}"
+		android:layout_width="${2:wrap_content}"
+		android:layout_height="${3:wrap_content}"
+		android:text="R.string.${4:text}" />
+# Android menu
+snippet <menu
+abbr    Android <menu /> element
+prev_word   '^'
+	<menu xmlns:android="http://schemas.android.com/apk/res/android">
+		${0}
+	</menu>
+
+# Android menu item
+snippet <item
+abbr    Android <item /> element in <menu />
+prev_word   '^'
+	<item android:id="@+id/${1:item}"
+		android:title="@string/${2:item}"
+		android:icon="@drawable/${3:ic_menu_item}" />
+
+# Android string 
+snippet <string
+abbr    Android <string /> element in <resources />
+prev_word   '^'
+    <string name="${1}">${2}</string>
+
+# Android layout
+snippet <layout
+abbr    Android <Layout /> element in <resources />
+prev_word   '^'
+	<${1:Relative}Layout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="${2:fill_parent}"
+		android:layout_height="${3:fill_parent}">
+		${0}
+	</$1Layout>
+
+# Android TextView
+snippet <TextView
+abbr    Android <TextView /> element in layout xml.
+prev_word   '^'
+	<TextView android:id="@+id/${1:text}"
+		android:layout_width="${2:wrap_content}"
+		android:layout_height="${3:wrap_content}"
+		android:text="@string/${4:text}"
+		android:style="${5:@android:style/TextAppearance}" />
+
+

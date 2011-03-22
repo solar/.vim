@@ -1,0 +1,20 @@
+snippet runnable
+abbr    new Runnable() {
+prev_word   '=, ,('
+	new Runnable() {
+		@Override
+		public void run() {
+			${1}
+		}
+	}
+
+snippet listener
+abbr    new X.OnYListener() {
+prev_word   '=, ,('
+	new ${1}On${2:Click}Listener() {
+		@Override
+		public ${3:void} on$2(${4}) {
+			${0}
+		}
+	}
+
