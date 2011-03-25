@@ -18,9 +18,9 @@ aug END
 
 " 基本設定 {{{
 syntax on
-filetype plugin on
+filetype plugin indent on
 set modeline
-set directory-=.
+set directory=c:\tmp
 set iminsert=0
 set imsearch=0
 set history=100
@@ -47,13 +47,14 @@ set wildmenu
 set tags=tags;
 set formatoptions&
 set formatoptions+=mM
-let format_allow_over_tw = 1
 " }}}
 
 " 画面 {{{
 colorscheme lucius
 if has('gui_running')
     set guifont=DejaVu_Sans_Mono:h10:cSHIFTJIS
+    set guioptions-=T
+    set guioptions-=m
 endif
 set number
 set ruler
@@ -77,7 +78,8 @@ set foldclose=
 "}}}
 
 " バックアップ {{{
-set nobackup
+set backup
+set backupdir=C:\tmp
 " }}}
 
 " キーマッピング {{{
@@ -113,18 +115,20 @@ nnoremap tk :<C-u>pop<CR>
 nnoremap tl :<C-u>tags<CR>
 
 " ウィンドウ移動
-noremap sj <C-w>j
-noremap sk <C-w>k
-noremap sh <C-w>h
-noremap sl <C-w>l
-noremap sc <C-w>c
-noremap sn <C-w>n
-noremap sv <C-w>v
-noremap ss <C-w>s
-noremap sJ <C-w>J
-noremap sK <C-w>K
-noremap sH <C-w>H
-noremap sL <C-w>L
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+nnoremap sc <C-w>c
+nnoremap sn <C-w>n
+nnoremap sv <C-w>v
+nnoremap ss <C-w>s
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sH <C-w>H
+nnoremap sL <C-w>L
+
+
 
 " ヘルプ
 nnoremap <C-h>  :<C-u>help<Space>
@@ -156,10 +160,6 @@ endfunction
 if !has('gui_running') && has('xterm_clipboard')
     set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
 endif
-
-
-" バッファ表示時にカレントディレクトリ設定
-au MyAutoCmd BufEnter * execute ":lcd " . expand("%:p:h")
 
 " コマンドラインウィンドウ {{{
 nnoremap <sid>(command-line-enter) q:
@@ -291,8 +291,10 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 let g:neocomplcache_snippets_dir = '~/vimfiles/snippets'
 
 " スニペットを展開
-imap <expr><TAB> neocomplcache#plugin#snippets_complete#expandable() ? "\(neocomplcache_snippets_expand)" : "\<TAB>"
-smap <TAB> (neocomplcache_snippets_expand)
+"imap <expr><TAB> neocomplcache#plugin#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
+imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
+smap <C-l> <Plug>(neocomplcache_snippets_expand)
+"smap <TAB> <Plug>(neocomplcache_snippets_expand)
 
 " SuperTab like snippets behavior.
 "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -326,7 +328,7 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " Taglist {{{
 let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
 let Tlist_WinWidth = 40
-let Tlist_Auto_Open = 0
+let Tlist_Auto_Open = 1
 let Tlist_Compact_Format = 1
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -336,6 +338,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Unite {{{
 " デフォルトでインサートモードにはしない
 let g:unite_enable_start_insert = 0
+let g:unite_winheight = 32
 
 " The prefix key.
 "nnoremap [unite]
@@ -346,8 +349,15 @@ nnoremap [unite]t :Unite tab<CR>
 nnoremap [unite]m :Unite file_mru<CR>
 nnoremap [unite]o :Unite outline<CR>
 nnoremap [unite]q :Unite qf -no-quit<CR>
+nnoremap [unite]M :Unite mark<CR>
+nnoremap [unite]r :Unite register<CR>
+nnoremap [unite]g :Unite grep<CR>
 
+" file_mru
 let g:unite_source_file_mru_limit = 100
+
+" mark
+let g:unite_source_mark_marks = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.'`^<>[]{}()\""
 " }}}
 
 " VimFiler {{{
@@ -359,7 +369,19 @@ let g:vimfiler_trashbox_directory = expand("~/.vimfiler_trashbox")
 if !has('unix')
     let g:git_bin = "c:/tools/git/bin/git.exe"
 endif
-let g:git_command_edit = "rightbelow vnew"
+let g:git_no_map_default = 1
+let g:git_command_edit = 'rightbelow vnew'
+
+nnoremap <Space>gd :<C-u>GitDiff --cached<CR>
+nnoremap <Space>gD :<C-u>GitDiff<CR>
+nnoremap <Space>gs :<C-u>GitStatus<CR>
+nnoremap <Space>gl :<C-u>GitLog<CR>
+nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<CR>
+nnoremap <Space>ga :<C-u>GitAdd<CR>
+nnoremap <Space>gA :<C-u>GitAdd <cfile><CR>
+nnoremap <Space>gc :<C-u>GitCommit<CR>
+nnoremap <Space>gC :<C-u>GitCommit --amend<CR>
+nnoremap <Space>gp :<C-u>Git push<CR>
 " }}}
 
 " NERD Commenter {{{
@@ -371,29 +393,45 @@ vmap <Space>/ <Plug>NERDCommenterToggle
 vmap <Space>/s <Plug>NERDCommenterSexy
 vmap <Space>/b <Plug>NERDCommenterMinimal
 " }}}
+
+" eclim {{{
+nnoremap <Space>Jdc :<C-u>JavaDocComment<CR>
+nnoremap <Space>JI :<C-u>JavaImportMissing<CR>
+nnoremap <Space>Ji :<C-u>JavaImport<CR>
+nnoremap <Space>Jp :<C-u>JavaImpl<CR>
+" }}}
+
+" その他 {{{
+" format.vim {{{
+let format_allow_over_tw = 1
+" }}}
+" }}}
 " }}}
 
 " ファイルタイプ {{{
+" 編集時にファイルの存在するディレクトリに移動
+au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,.gitignore,gitconfig} execute ":lcd " . expand("%:p:h")
+
 " Java {{{
 au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
+au MyAutoCmd FileType java setlocal cinoptions+=+2s
 au MyAutoCmd BufNew,BufEnter *.java set tags+=c:\Users\Solar\tags\java.tags
 au MyAutoCmd BufDelete,BufLeave *.java set tags-=c:\Users\Solar\tags\java.tags
 " }}}
 
 " PHP {{{
 au MyAutoCmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-
 " }}}
 
 " Python {{{
 au MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
 " }}}
 
 " その他 {{{
-autocmd MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+au MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+au MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " }}}
 " }}}
 

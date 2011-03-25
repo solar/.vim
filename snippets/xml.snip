@@ -54,4 +54,9 @@ prev_word   '^'
 		android:text="@string/${4:text}"
 		android:style="${5:@android:style/TextAppearance}" />
 
-
+# AndroidManifest service
+snippet <service
+abbr    Android <service> element in AndroidManifest.xml
+prev_word   '^'
+	<service android:name=".${1:ServiceName}"
+		android:label="@string/${2:service_label}" />
