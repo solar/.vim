@@ -57,3 +57,160 @@ prev_word   '^,=, '
 		.create()
 		.show();
 
+snippet     asyncclass
+abbr        Android Class extends AsyncTask
+prev_word   '^'
+	private class ${1:Task} extends AsyncTask<${2:Void}, ${3:Void}, ${4:Boolean}> {
+		/**
+		 * プログレスダイアログ
+		 */
+		private ProgressDialog dialog;
+		
+		/**
+		 * Constructs a new instance.
+		 */
+		public $1() {
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#doInBackground($2...)
+		 */
+		protected $4 doInBackground($2... args) {
+			return null;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#onPreExecute()
+		 */
+		protected void onPreExecute() {
+			// プログレスダイアログの表示
+			dialog = new ProgressDialog(${5:Activity}.this);
+			dialog.setTitle(getString(R.string.${6:task_progress_title}));
+			dialog.setMessage(getString(R.string.${7:task_progress_message}));
+			dialog.setProgressStyle(ProgressDialog.STYLE_${8:SPINNER|HORIZONTALLY});
+			dialog.setCancelable(true);
+			dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+				@Override
+				public void onCancel(DialogInterface dialog) {
+					$1.this.cancel(true);
+				}
+			});
+			dialog.show();
+			return;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#onPostExecute($4)
+		 */
+		protected void onPostExecute($4 result) {
+			if (dialog != null) {
+				dialog.dismiss();
+				dialog = null;
+			}
+			if (result != null) {
+				// Succeeded
+			} else {
+				// Failed
+				new AlertDialog.Builder($5.this)
+					.setTitle(R.string.${9:task_failed_title})
+					.setMessage(R.string.${10:task_failed_message})
+					.setNeutralButton(R.string.close, null)
+					.create()
+					.show();
+			}
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * @see AsyncTask#onCancelled()
+		 */
+		protected void onCancelled() {
+			if (dialog != null) {
+				dialog.dismiss();
+				dialog = null;
+			}
+		}
+	}
+
+snippet     asyncvar
+abbr        Android new AsyncTask variable
+prev_word   '^, '
+	AsyncTask<${1:Void}, ${2:Void}, ${3:Boolean}> ${4:task} =
+			new AsyncTask<$1, $2, $3>() {
+		/**
+		 * プログレスダイアログ
+		 */
+		private ProgressDialog dialog;
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#doInBackground($1...)
+		 */
+		protected $3 doInBackground($1... args) {
+			return null;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#onPreExecute()
+		 */
+		protected void onPreExecute() {
+			// プログレスダイアログの表示
+			dialog = new ProgressDialog(${5:Activity}.this);
+			dialog.setTitle(getString(R.string.${6:task_progress_title}));
+			dialog.setMessage(getString(R.string.${7:task_progress_message}));
+			dialog.setProgressStyle(ProgressDialog.STYLE_${8:SPINNER|HORIZONTALLY});
+			dialog.setCancelable(true);
+			dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+				@Override
+				public void onCancel(DialogInterface dialog) {
+					$4.cancel(true);
+				}
+			});
+			dialog.show();
+			return;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see AsyncTask#onPostExecute($3)
+		 */
+		protected void onPostExecute($3 result) {
+			if (dialog != null) {
+				dialog.dismiss();
+				dialog = null;
+			}
+			if (result != null) {
+				// Succeeded
+			} else {
+				// Failed
+				new AlertDialog.Builder($5.this)
+					.setTitle(R.string.${9:task_failed_title})
+					.setMessage(R.string.${10:task_failed_message})
+					.setNeutralButton(R.string.close, null)
+					.create()
+					.show();
+			}
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * @see AsyncTask#onCancelled()
+		 */
+		protected void onCancelled() {
+			if (dialog != null) {
+				dialog.dismiss();
+				dialog = null;
+			}
+		}
+	}
+
