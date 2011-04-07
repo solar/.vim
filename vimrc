@@ -36,7 +36,7 @@ set hlsearch
 " 編集 {{{
 set autoindent
 set smartindent
-set tabstop=8
+set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
@@ -58,7 +58,8 @@ if has('gui_running')
 endif
 set number
 set ruler
-set nolist
+set list
+set listchars=tab:>-,trail:-
 set wrap
 set laststatus=2
 set cmdheight=2
@@ -264,66 +265,14 @@ endif
 " pathogen
 call pathogen#runtime_append_all_bundles()
 
-" NeoComplCache {{{
-" NeoComplCacheを起動時に有効にする
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" NeoComplCache
+source ~/vimfiles/config/neocomplcache.vim
 
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" Unite
+source ~/vimfiles/config/unite.vim
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" スニペットの配置
-let g:neocomplcache_snippets_dir = '~/vimfiles/snippets'
-
-" スニペットを展開
-"imap <expr><TAB> neocomplcache#plugin#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
-imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
-smap <C-l> <Plug>(neocomplcache_snippets_expand)
-"smap <TAB> <Plug>(neocomplcache_snippets_expand)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-" }}}
+" Git-Vim
+source ~/vimfiles/config/git-vim.vim
 
 " Taglist {{{
 let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
@@ -335,53 +284,9 @@ let Tlist_Exit_OnlyWindow = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 " }}}
 
-" Unite {{{
-" デフォルトでインサートモードにはしない
-let g:unite_enable_start_insert = 0
-let g:unite_winheight = 32
-
-" The prefix key.
-"nnoremap [unite]
-nmap ' [unite]
-noremap [unite]u :Unite
-nnoremap [unite]' :Unite buffer file<CR>
-nnoremap [unite]t :Unite tab<CR>
-nnoremap [unite]m :Unite file_mru<CR>
-nnoremap [unite]o :Unite outline<CR>
-nnoremap [unite]q :Unite qf -no-quit<CR>
-nnoremap [unite]M :Unite mark<CR>
-nnoremap [unite]r :Unite register<CR>
-nnoremap [unite]g :Unite grep<CR>
-
-" file_mru
-let g:unite_source_file_mru_limit = 100
-
-" mark
-let g:unite_source_mark_marks = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.'`^<>[]{}()\""
-" }}}
-
 " VimFiler {{{
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_trashbox_directory = expand("~/.vimfiler_trashbox")
-" }}}
-
-" Git-Vim {{{
-if !has('unix')
-    let g:git_bin = "c:/tools/git/bin/git.exe"
-endif
-let g:git_no_map_default = 1
-let g:git_command_edit = 'rightbelow vnew'
-
-nnoremap <Space>gd :<C-u>GitDiff --cached<CR>
-nnoremap <Space>gD :<C-u>GitDiff<CR>
-nnoremap <Space>gs :<C-u>GitStatus<CR>
-nnoremap <Space>gl :<C-u>GitLog<CR>
-nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<CR>
-nnoremap <Space>ga :<C-u>GitAdd<CR>
-nnoremap <Space>gA :<C-u>GitAdd <cfile><CR>
-nnoremap <Space>gc :<C-u>GitCommit<CR>
-nnoremap <Space>gC :<C-u>GitCommit --amend<CR>
-nnoremap <Space>gp :<C-u>Git push<CR>
 " }}}
 
 " NERD Commenter {{{
@@ -399,6 +304,7 @@ nnoremap <Space>Jdc :<C-u>JavaDocComment<CR>
 nnoremap <Space>JI :<C-u>JavaImportMissing<CR>
 nnoremap <Space>Ji :<C-u>JavaImport<CR>
 nnoremap <Space>Jp :<C-u>JavaImpl<CR>
+nnoremap <Space>Jc :<C-u>JavaConstructor<CR>
 " }}}
 
 " その他 {{{
@@ -410,12 +316,11 @@ let format_allow_over_tw = 1
 
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
-au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,.gitignore,gitconfig} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
-au MyAutoCmd FileType java setlocal cinoptions+=+2s
 au MyAutoCmd BufNew,BufEnter *.java set tags+=c:\Users\Solar\tags\java.tags
 au MyAutoCmd BufDelete,BufLeave *.java set tags-=c:\Users\Solar\tags\java.tags
 " }}}
@@ -429,6 +334,7 @@ au MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " }}}
 
 " その他 {{{
+au MyAutoCmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 au MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 au MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 au MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS

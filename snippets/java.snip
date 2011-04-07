@@ -1,5 +1,5 @@
 snippet runnable
-abbr    new Runnable() {
+abbr    Android new Runnable() {
 prev_word   '=, ,('
 	new Runnable() {
 		@Override
@@ -9,7 +9,7 @@ prev_word   '=, ,('
 	}
 
 snippet listener
-abbr    new X.OnYListener() {
+abbr    Android new X.OnYListener() {
 prev_word   '=, ,('
 	new ${1}On${2:Click}Listener() {
 		@Override
@@ -19,12 +19,12 @@ prev_word   '=, ,('
 	}
 
 snippet servicecon
-abbr    new ServiceConnection() {
+abbr    Android new ServiceConnection()
 prev_word   '=, ,('
 	new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			{1:Binder} binder = ($1)service;
+			${1:Binder} binder = ($1)service;
 			${0}
 		}
 
@@ -32,4 +32,28 @@ prev_word   '=, ,('
 		public void onServiceDisconnected(ComponentName name) {
 		}
 	}
+
+snippet alertdialog
+abbr    Android AlertDialog
+prev_word   '^,=, '
+	new AlertDialog.Builder(${1:this})
+		.setTitle(R.string.${2:title})
+		.setMessage(R.string.${3:message})
+		.setPositiveButton(R.string.${4:yes},
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog,
+					int which) {
+				${0}
+			}
+		})
+		.setNegativeButton(R.string.${5:no},
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog,
+					int which) {
+			}
+		})
+		.create()
+		.show();
 
