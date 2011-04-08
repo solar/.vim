@@ -136,14 +136,14 @@ let g:neocomplcache_disable_auto_select_buffer_name_pattern = ''
 " ニペット補完ファイルは標準のスニペット補完ファイルを読み込ん
 " だ後に読み込まれる。 重複したスニペットは上書きされる。
 " この変数はユーザが自分で定義しない限り存在しない。
-let g:neocomplcache_snippets_dir = '~/vimfiles/snippets'
+let g:neocomplcache_snippets_dir = expand("~/vimfiles/snippets")
 
 " neocomplcacheが一時ファイルを書き出すディレクトリを指定する。
 " ここで指定したディレクトリが実際に存在しない場合、作成される。
 " 例えばkeyword_complete.vimはキーワードのキャッシュをこの下の
 " 'keyword_cache'ディレクトリに保存する。
 " 初期値は'~/.neocon'である。
-let g:neocomplcache_temporary_dir = '~/.neocon'
+let g:neocomplcache_temporary_dir = expand("~/.neocon")
 
 " 補完するためのキーワードパターンを記録する。 これはファイル
 " タイプ毎に正規表現で指定されている。
@@ -257,7 +257,7 @@ let g:neocomplcache_disable_select_mode_mappings = 1
 if has('unix')
     let g:neocomplcache_ctags_program = 'ctags'
 else
-    let g:neocomplcache_ctags_program = 'c:/tools/bin/ctags.exe'
+    let g:neocomplcache_ctags_program = 'c:\tools\bin\ctags.exe'
 endif
 
 " g:neocomplcache_ctags_arguments_list *g:neocomplcache_ctags_arguments_list*
@@ -402,8 +402,9 @@ endif
 
 " キーマッピング {{{
 
-imap <C-l> <Plug>(neocomplcache_snippets_expand)
-smap <C-l> <Plug>(neocomplcache_snippets_expand)
+imap <expr><C-l>	neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<C-n>" : "\<C-l>")
+smap <expr><C-l>	neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<C-n>" : "\<C-l>")
+
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-c> neocomplcache#complete_common_string()
 
@@ -417,5 +418,8 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
+
+nnoremap <Space>ne :<C-u>NeoComplCacheEnable<CR>
+nnoremap <Space>ns :<C-u>NeoComplCacheEditSnippet<CR>
 
 "}}}
