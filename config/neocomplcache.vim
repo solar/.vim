@@ -83,7 +83,7 @@ let g:neocomplcache_enable_auto_delimiter = 1
 " 自動補完を開始するための計算時間を定義する。このオプションは
 " 'updatetime'の値を書き換える。
 " 初期値は300である。
-let g:neocomplcache_cursor_hold_i_time = 360
+let g:neocomplcache_cursor_hold_i_time = 300
 
 " 大文字を入力したときに、それを単語の区切りとしてあいまい検索
 " を行うかどうか制御する。 例えば AE と入力したとき、

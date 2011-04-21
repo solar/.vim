@@ -83,3 +83,27 @@ prev_word   '^'
 			android:layout_width="${3:wrap_content}"
 			android:layout_height="${4:wrap_content}" />
 
+snippet     <PreferenceScreen
+abbr        Android <PreferenceScreen> element in preferences xml.
+prev_word   '^'
+	<PreferenceScreen
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:key="${1:preference_screen}">
+	</PreferenceScreen>
+
+snippet     <CheckBoxPreference
+abbr        Android <CheckboxPreference> element in preferences xml.
+prev_word   '^'
+	<CheckBoxPreference
+			android:key="${1:checkbox}"
+			android:title="${1:Checkbox}" />
+
+snippet     <ListPreference
+abbr        Android <ListPreference> element in preferences xml.
+prev_word   '^'
+	<ListPreference
+			android:key="${1:list}"
+			android:title="R.string.${2:list_title}""
+			android:entries="${3:R.string.titles}"
+			android:entryValues="${4:R.string.values}" />
+

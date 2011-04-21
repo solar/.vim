@@ -144,22 +144,30 @@ prev_word   '^'
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.${2:pref});
 		}
-
-		/**
-		 * {@inheritDoc}
-		 * @see Activity#onResume()
-		 */
-		protected void onResume() {
-			super.onResume();
-		}
-
-		/**
-		 * {@inheritDoc}
-		 * @see PreferenceActivity#onActivityResult(int,int,Intent)
-		 */
-		protected void onActivityResult(int request, int result, Intent data) {
-			switch (request) {
-			}
-		}
 	}
+
+snippet     onCreateOptionMenu
+abbr        Android Activity#onCreateOptionMenu(Menu)
+	/**
+	 * {@inheritDoc}
+	 * @see Activity#onCreateOptionsMenu(Menu)
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.${1}, menu);
+		return true;
+	}
+
+snippet     onMenuItemSelected
+abbr        Android Activity#onMenuItemSelected(int, MenuItem)
+	/**
+	 * {@inheritDoc}
+	 * @see Activity#onMenuItemSelected(int,MenuItem)
+	 */
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		switch (item.getItemId()) {
+		}
+		return true;
+	}
+
 
