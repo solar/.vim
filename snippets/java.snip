@@ -1,4 +1,4 @@
-snippet runnable
+snippet Runnable
 abbr    Android new Runnable() {
 	new Runnable() {
 		@Override
@@ -7,7 +7,7 @@ abbr    Android new Runnable() {
 		}
 	}
 
-snippet listener
+snippet Listener
 abbr    Android new X.OnYListener() {
 	new ${1}On${2:Click}Listener() {
 		@Override
@@ -16,7 +16,7 @@ abbr    Android new X.OnYListener() {
 		}
 	}
 
-snippet servicecon
+snippet ServiceConnection
 abbr    Android new ServiceConnection()
 	new ServiceConnection() {
 		@Override
@@ -30,7 +30,7 @@ abbr    Android new ServiceConnection()
 		}
 	}
 
-snippet     alertdlg
+snippet     AlertDialog
 abbr        Android AlertDialog
 	new AlertDialog.Builder(${1:this})
 		.setTitle(R.string.${2:title})
@@ -49,7 +49,7 @@ abbr        Android AlertDialog
 		.create()
 		.show();
 
-snippet     asynctask
+snippet     AsyncTask
 abbr        Android Class extends AsyncTask
 prev_word   '^'
 	private class ${1:Task} extends AsyncTask<${2:Void}, ${3:Void}, ${4:Boolean}> {
@@ -131,7 +131,7 @@ prev_word   '^'
 		}
 	}
 
-snippet     prefactivity
+snippet     PreferenceActivity
 abbr        Android PreferenceActivity
 prev_word   '^'
 	public class ${1:Pref} extends PreferenceActivity {
@@ -168,6 +168,39 @@ abbr        Android Activity#onMenuItemSelected(int, MenuItem)
 		switch (item.getItemId()) {
 		}
 		return true;
+	}
+
+snippet     WebViewClient
+abbr        Android new WebViewClient()
+	new WebViewClient() {
+
+		/**
+		 * {@inheritDoc}
+		 * @see WebViewClient#onPageStarted(WebView,String,Bitmap)
+		 */
+		@Override
+		public void onPageStarted(WebView view, String url, Bitmap icon) {
+			super.onPageStarted(view, url, icon);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see WebViewClient#onPageFinished(WebView,String)
+		 */
+		@Override
+		public void onPageFinished(WebView view, String url) {
+			super.onPageFinished(view, url);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see WebViewClient#onReceivedError(WebView,int,String,String)
+		 */
+		@Override
+		public void onReceivedError(WebView view, int errorCode,
+				String description, String failingUrl) {
+			super.onReceivedError(view, errorCode, description, failingUrl);
+		}
 	}
 
 

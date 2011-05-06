@@ -1,9 +1,5 @@
-" vimrc
-" 
-" Copyright (c) 2011 Shinpei Okamura
 "
-" Licensed under the MIT license.
-" http://www.opensource.org/licenses/mit-license.php
+" vimrc
 "
 
 " 初期化 {{{
@@ -20,10 +16,15 @@ aug END
 syntax on
 filetype plugin indent on
 set modeline
-set directory=c:\tmp
 set iminsert=0
 set imsearch=0
 set history=100
+
+if has('win32') || has('win64')
+    set directory=c:\tmp
+else
+    set directory=~/tmp
+endif
 " }}}
 
 " 検索 {{{
@@ -51,11 +52,6 @@ set formatoptions+=mM
 
 " 画面 {{{
 colorscheme lucius
-if has('gui_running')
-    set guifont=DejaVu_Sans_Mono:h10:cSHIFTJIS
-    set guioptions-=T
-    set guioptions-=m
-endif
 set number
 set ruler
 set list
@@ -65,10 +61,14 @@ set laststatus=2
 set cmdheight=2
 set showcmd
 set title
+set virtualedit+=block
 set winwidth=30
 set winminwidth=30
 if &term == 'screen'
     let &t_Co=256
+endif
+if &term == 'cygwin'
+    colorscheme desert
 endif
 " }}}
 
@@ -80,11 +80,18 @@ set foldclose=
 
 " バックアップ {{{
 set backup
-set backupdir=C:\tmp
+if has('win32') || has('win64')
+    set backupdir=C:\tmp
+else
+    set backupdir=~/tmp
+endif
 " }}}
 
 " キーマッピング {{{
 nnoremap <C-E> g<C-]>
+
+nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>s. :<C-u>source $MYVIMRC<CR>
 
 " ハイライト消去
 noremap <Esc><Esc> :<C-u>nohlsearch<CR>
@@ -101,19 +108,19 @@ cnoremap <expr> /   getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ?   getcmdtype() == '?' ? '\?' : '?'
 
 " タブページを使いやすく
-nnoremap <C-t>  <Nop>
-nnoremap <C-t>n :<C-u>tabnew<CR>
-nnoremap <C-t>c :<C-u>tabclose<CR>
-nnoremap <C-t>o :<C-u>tabonly<CR>
-nnoremap <C-t>j :<C-u>execute 'tabnext' 1 + (tabpagenr() + v:count1 - 1) % tabpagenr('$')<CR>
-nnoremap <C-t>k gT
+nmap <C-t>  <SID>[tab]
+nnoremap <SID>[tab]n :<C-u>tabnew<CR>
+nnoremap <SID>[tab]c :<C-u>tabclose<CR>
+nnoremap <SID>[tab]o :<C-u>tabonly<CR>
+nnoremap <SID>[tab]j :<C-u>execute 'tabnext' 1 + (tabpagenr() + v:count1 - 1) % tabpagenr('$')<CR>
+nnoremap <SID>[tab]k gT
 
 " タグを使いやすく
-nnoremap t  <Nop>
-nnoremap tt <C-]>
-nnoremap tj :<C-u>tag<CR>
-nnoremap tk :<C-u>pop<CR>
-nnoremap tl :<C-u>tags<CR>
+nmap t  <SID>[tag]
+nnoremap <SID>[tag]t <C-]>
+nnoremap <SID>[tag]j :<C-u>tag<CR>
+nnoremap <SID>[tag]k :<C-u>pop<CR>
+nnoremap <SID>[tag]l :<C-u>tags<CR>
 
 " ウィンドウ移動
 nnoremap sj <C-w>j
@@ -129,8 +136,6 @@ nnoremap sK <C-w>K
 nnoremap sH <C-w>H
 nnoremap sL <C-w>L
 
-
-
 " ヘルプ
 nnoremap <C-h>  :<C-u>help<Space>
 
@@ -144,17 +149,12 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 " バッファを削除する際、ウィンドウレイアウトを維持する
 :com! Bd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
 
+" Yで行末までヤンク
+nnoremap Y y$
+
 " }}}
 
 " ファンクション定義 {{{
-
-" ウィンドウ幅を84以上に設定
-function! s:good_width()
-    if winwidth(0) < 84
-        vertical resize 84
-    endif
-endfunction
-
 " }}}
 
 " その他 {{{
@@ -275,9 +275,13 @@ source ~/vimfiles/config/unite.vim
 source ~/vimfiles/config/git-vim.vim
 
 " Taglist {{{
-let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
-let Tlist_WinWidth = 40
-let Tlist_Auto_Open = 1
+if has('win32') || has('win64')
+    let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
+else
+    let Tlist_Ctags_Cmd = 'ctags'
+endif
+let Tlist_WinWidth = 20
+let Tlist_Auto_Open = 0
 let Tlist_Compact_Format = 1
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -287,6 +291,8 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " VimFiler {{{
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_trashbox_directory = expand("~/.vimfiler_trashbox")
+
+nnoremap <Space>f :<C-u>VimFiler<CR>
 " }}}
 
 " NERD Commenter {{{
@@ -300,11 +306,14 @@ vmap <Space>/b <Plug>NERDCommenterMinimal
 " }}}
 
 " eclim {{{
-nnoremap <Space>Jdc :<C-u>JavaDocComment<CR>
-nnoremap <Space>JI :<C-u>JavaImportMissing<CR>
-nnoremap <Space>Ji :<C-u>JavaImport<CR>
-nnoremap <Space>Jp :<C-u>JavaImpl<CR>
-nnoremap <Space>Jc :<C-u>JavaConstructor<CR>
+nmap        <Space>J        <SID>[java]
+nnoremap    <SID>[java]dc   :<C-u>JavaDocComment<CR>
+nnoremap    <SID>[java]I    :<C-u>JavaImportMissing<CR>
+nnoremap    <SID>[java]i    :<C-u>JavaImport<CR>
+nnoremap    <SID>[java]p    :<C-u>JavaImpl<CR>
+nnoremap    <SID>[java]c    :<C-u>JavaConstructor<CR>
+nnoremap    <SID>[java]g    :<C-u>JavaGet<CR>
+nnoremap    <SID>[java]s    :<C-u>JavaSet<CR>
 " }}}
 
 " その他 {{{
@@ -317,12 +326,10 @@ let format_allow_over_tw = 1
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
 au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,.gitignore,gitconfig} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
-au MyAutoCmd BufNew,BufEnter *.java set tags+=c:\Users\Solar\tags\java.tags
-au MyAutoCmd BufDelete,BufLeave *.java set tags-=c:\Users\Solar\tags\java.tags
 " }}}
 
 " PHP {{{

@@ -9,18 +9,18 @@ let g:unite_data_directory = expand("~/.unite")
 " }}}
 
 " キーマッピング {{{
-nmap ' [unite]
-noremap [unite]u :Unite
-nnoremap [unite]' :Unite buffer file<CR>
-nnoremap [unite]b :Unite buffer<CR>
-nnoremap [unite]f :Unite file<CR>
-nnoremap [unite]t :Unite tab<CR>
-nnoremap [unite]m :Unite file_mru<CR>
-nnoremap [unite]o :Unite outline<CR>
-nnoremap [unite]q :Unite qf -no-quit<CR>
-nnoremap [unite]M :Unite mark<CR>
-nnoremap [unite]r :Unite register<CR>
-nnoremap [unite]g :Unite grep<CR>
+nmap ' <SID>[unite]
+nnoremap <SID>[unite]u :Unite
+nnoremap <SID>[unite]' :Unite buffer file<CR>
+nnoremap <SID>[unite]b :Unite buffer<CR>
+nnoremap <SID>[unite]f :Unite file<CR>
+nnoremap <SID>[unite]t :Unite tab<CR>
+nnoremap <SID>[unite]m :Unite file_mru<CR>
+nnoremap <SID>[unite]o :Unite outline<CR>
+nnoremap <SID>[unite]q :Unite qf -no-quit<CR>
+nnoremap <SID>[unite]M :Unite mark<CR>
+nnoremap <SID>[unite]r :Unite register<CR>
+nnoremap <SID>[unite]g :Unite grep<CR>
 " }}}
 
 " source設定 {{{
