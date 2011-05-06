@@ -108,10 +108,13 @@ let g:neocomplcache_enable_caching_message = 1
 " 初期値は500000となっている。
 let g:neocomplcache_caching_limit_file_size = 500000
 
-" キャッシュしないバッファ名のパターンを正規表現で設定する。空
-" 文字列だと無視される。
+" g:neocomplcache_disable_caching_file_path_pattern
+"
+" キャッシュを保存しないバッファのファイルパスのパターンを正規表
+" 現で設定する。空文字列だと無視される。
+"
 " 初期値は空となっている。
-let g:neocomplcache_disable_caching_buffer_name_pattern = ''
+let g:neocomplcache_disable_caching_file_path_pattern = ''
 
 " neocomplcacheの自動補完を無効化するバッファ名のパターンを正規表
 " 現で設定する。空文字列だと無視される。
@@ -136,7 +139,7 @@ let g:neocomplcache_disable_auto_select_buffer_name_pattern = ''
 " ニペット補完ファイルは標準のスニペット補完ファイルを読み込ん
 " だ後に読み込まれる。 重複したスニペットは上書きされる。
 " この変数はユーザが自分で定義しない限り存在しない。
-let g:neocomplcache_snippets_dir = expand("~/vimfiles/snippets")
+let g:neocomplcache_snippets_dir = expand("~/.vim/snippets")
 
 " neocomplcacheが一時ファイルを書き出すディレクトリを指定する。
 " ここで指定したディレクトリが実際に存在しない場合、作成される。

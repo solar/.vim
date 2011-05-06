@@ -20,6 +20,8 @@ set iminsert=0
 set imsearch=0
 set history=100
 
+set runtimepath+=$HOME/.vim,$HOME/.vim/after
+
 if has('win32') || has('win64')
     set directory=c:\tmp
 else
@@ -266,13 +268,13 @@ endif
 call pathogen#runtime_append_all_bundles()
 
 " NeoComplCache
-source ~/vimfiles/config/neocomplcache.vim
+source $HOME/.vim/config/neocomplcache.vim
 
 " Unite
-source ~/vimfiles/config/unite.vim
+source $HOME/.vim/config/unite.vim
 
 " Git-Vim
-source ~/vimfiles/config/git-vim.vim
+source $HOME/.vim/config/git-vim.vim
 
 " Taglist {{{
 if has('win32') || has('win64')
@@ -326,7 +328,7 @@ let format_allow_over_tw = 1
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
 au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
