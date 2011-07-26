@@ -11,7 +11,7 @@ prev_word   '^'
 	<Button android:id="@+id/${1:id}"
 			android:layout_width="${2:wrap_content}"
 			android:layout_height="${3:wrap_content}"
-			android:text="R.string.${4:text}" />
+			android:text="@string/${4:text}" />
 # Android menu
 snippet <menu
 abbr    Android <menu /> element
@@ -21,7 +21,7 @@ prev_word   '^'
 	</menu>
 
 # Android menu item
-snippet <item
+snippet <itemMenu
 abbr    Android <item /> element in <menu />
 prev_word   '^'
 	<item android:id="@+id/${1:item}"
@@ -39,8 +39,8 @@ snippet <layout
 abbr    Android <Layout /> element in <resources />
 prev_word   '^'
 	<${1:Relative}Layout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="${2:fill_parent}"
-			android:layout_height="${3:fill_parent}">
+			android:layout_width="${2:match_parent}"
+			android:layout_height="${3:match_parent}">
 		${0}
 	</$1Layout>
 
@@ -52,7 +52,7 @@ prev_word   '^'
 			android:layout_width="${2:wrap_content}"
 			android:layout_height="${3:wrap_content}"
 			android:text="@string/${4:text}"
-			android:theme="${5:@android:style/TextAppearance}" />
+			android:textAppearance="${5:@android:style/TextAppearance}" />
 
 # AndroidManifest service
 snippet <service
@@ -106,4 +106,60 @@ prev_word   '^'
 			android:title="R.string.${2:list_title}""
 			android:entries="${3:R.string.titles}"
 			android:entryValues="${4:R.string.values}" />
+
+snippet     <selectorDrawable
+abbr        Android drawable <selector> element
+prev_word   '^'
+	<selector xmlns:android="http://schemas.android.com/apk/res/android"
+			android:constantSize="${1:false}"
+			android:dither="${2:true}"
+			android:variablePadding="${3:false}">
+		${0}
+	</selector>
+
+snippet     <itemDrawable
+abbr        Android StateListDrawable <item /> element
+prev_word   '^'
+	<item android:drawable="@drawable/${1:drawable_resource}"
+			android:state_pressed="${2:false}"
+			android:state_focused="${3:false}"
+			android:state_selected="${4:false}"
+			android:state_active="${5:false}"
+			android:state_checkable="${6:false}"
+			android:state_checked="${7:false}"
+			android:state_enabled="${8:false}"
+			android:state_window_focused="${9:false}" /> 
+
+snippet     <selectorColor
+abbr        Android ColorStateList <item /> element
+prev_word   '^'
+	hog
+
+snippet     <uses-permission
+abbr        Android <uses-permission /> in AndroidManifest.xml
+prev_word   '^'
+	<uses-permission android:name="android.permission.${0}" />
+
+snippet     <intent-filter-LAUNCHER
+abbr        Android intent-filter for launcher
+prev_word   '^'
+	<intent-filter>
+		<action android:name="android.intent.action.MAIN" />
+		<category android:name="android.intent.category.LAUNCHER" />
+	</intent-filter>
+
+snippet     <intent-filter-mixi
+abbr        Android intent-filter for mixi
+prev_word   '^'
+	<intent-filter>
+		<action android:name="android.intent.action.VIEW" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<category android:name="android.intent.cateogry.BROWSABLE" />
+		<data android:scheme="${1:mixiapp-}" />
+	</intent-filter>
+
+snippet     xmlns:android
+abbr        Android xmlns
+	xmlns:android="http://schemas.android.com/apk/res/android"${0}
+
 

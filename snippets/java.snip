@@ -3,7 +3,7 @@ abbr    Android new Runnable() {
 	new Runnable() {
 		@Override
 		public void run() {
-			${1}
+			${0}
 		}
 	}
 
@@ -21,7 +21,7 @@ abbr    Android new ServiceConnection()
 	new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			${1:Binder} binder = ($1)service;
+			${1:Binder} binder = ()service;
 			${0}
 		}
 
@@ -61,7 +61,7 @@ prev_word   '^'
 		/**
 		 * Constructs a new instance.
 		 */
-		public $1() {
+		public () {
 		}
 		
 		/**
@@ -88,7 +88,7 @@ prev_word   '^'
 			dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 				@Override
 				public void onCancel(DialogInterface dialog) {
-					$1.this.cancel(true);
+					.this.cancel(true);
 				}
 			});
 			dialog.show();
@@ -203,4 +203,155 @@ abbr        Android new WebViewClient()
 		}
 	}
 
+snippet     CallbackListenerMixi
+abbr        mixi Android SDK CallbackListener
+	new CallbackListener() {
+		@Override
+		public void onComplete(Bundle values) {
+			Log.v("${1}", "CallbackListener#onComplete()");
+			Log.v("", "response:" + values.getString("response"));
+		}
 
+		@Override
+		public void onCancel() {
+			Log.v("", "CallbackListener#onCancel()");
+		}
+
+		@Override
+		public void onFatal(ErrorInfo e) {
+			Log.v("", "CallbackListener#onFatal()");
+			Log.v("", MixiHelper.dumpErrorInfo(e));
+		}
+
+		@Override
+		public void onError(ErrorInfo e) {
+			Log.v("", "CallbackListener#onError()");
+			Log.v("", MixiHelper.dumpErrorInfo(e));
+		}
+	}${0}
+
+snippet     activity
+abbr        Android Activity
+prev_word   '^'
+	public class ${1}Activity extends Activity {
+
+		/**
+		 * {@inheritDoc}
+		 * @see Activity#onCreate(Bundle)
+		 */
+		protected void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.${2:layout});
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Activity#onResume()
+		 */
+		protected void onResume() {
+			super.onResume();
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Activity#onPause()
+		 */
+		protected void onPause() {
+			super.onPause();
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Activity#onDestroy()
+		 */
+		protected void onDestroy() {
+			super.onDestroy();
+		}
+	}
+
+snippet     CallbackListenerPochi
+abbr        pochi Android SDK CallbackListener
+	new Pochi.CallbackListener() {
+		@Override
+		public void onComplete(JSONObject json) {
+			Logger.log("CallbackListener#onComplete()");
+			Logger.log("json:" + json.toString());
+		}
+
+		@Override
+		public void onFatal(ErrorInfo e) {
+			Logger.log("CallbackListener#onFatal()");
+			Logger.log(e.toString());
+		}
+
+		@Override
+		public void onError(int code, String message) {
+			Logger.log("CallbackListener#onError()");
+			Logger.log("" + code + ":" + message);
+		}
+	}${0}
+
+snippet     fragment
+abbr        Android Fragment
+prev_word   '^'
+	public class ${1:Fragment} extends Fragment {
+
+		private Activity mActivity = null;
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onCreate(Bundle)
+		 */
+		public void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			Logger.log("[$1] onCreate()");
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onCreateView(LayoutInflater,ViewGroup,Bundle)
+		 */
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			Logger.log("[$1] onCreateView()");
+			View layout = inflater.inflate(R.layout.${2}, container, false);
+			return layout;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onActivityCreated(Bundle)
+		 */
+		public void onActivityCreated(Bundle savedInstanceState) {
+			super.onActivityCreated(savedInstanceState);
+			Logger.log("[$1] onActivityCreated()");
+
+			mActivity = getActivity();
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onResume()
+		 */
+		public void onResume() {
+			super.onResume();
+			Logger.log("[$1] onResume()");
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onPause()
+		 */
+		public void onPause() {
+			super.onPause();
+			Logger.log("[$1] onPause()");
+		}
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onDestroy()
+		 */
+		public void onDestroy() {
+			Logger.log("[$1] onDestroy()");
+			super.onDestroy();
+		}
+	}
