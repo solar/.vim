@@ -61,23 +61,25 @@ prev_word   '^'
 		/**
 		 * Constructs a new instance.
 		 */
-		public () {
+		public $1() {
 		}
-		
+	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see AsyncTask#doInBackground($2...)
 		 */
+		@Override
 		protected $4 doInBackground($2... args) {
 			return null;
 		}
-		
+	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see AsyncTask#onPreExecute()
 		 */
+		@Override
 		protected void onPreExecute() {
 			// プログレスダイアログの表示
 			dialog = new ProgressDialog(${5:Activity}.this);
@@ -100,6 +102,7 @@ prev_word   '^'
 		 * 
 		 * @see AsyncTask#onPostExecute($4)
 		 */
+		@Override
 		protected void onPostExecute($4 result) {
 			if (dialog != null) {
 				dialog.dismiss();
@@ -123,26 +126,12 @@ prev_word   '^'
 		 *
 		 * @see AsyncTask#onCancelled()
 		 */
+		@Override
 		protected void onCancelled() {
 			if (dialog != null) {
 				dialog.dismiss();
 				dialog = null;
 			}
-		}
-	}
-
-snippet     PreferenceActivity
-abbr        Android PreferenceActivity
-prev_word   '^'
-	public class ${1:Pref} extends PreferenceActivity {
-
-		/**
-		 * {@inheritDoc}
-		 * @see PreferenceActivity#onCreate(Bundle)
-		 */
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.${2:pref});
 		}
 	}
 
@@ -152,6 +141,7 @@ abbr        Android Activity#onCreateOptionMenu(Menu)
 	 * {@inheritDoc}
 	 * @see Activity#onCreateOptionsMenu(Menu)
 	 */
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		getMenuInflater().inflate(R.menu.${1}, menu);
@@ -209,46 +199,50 @@ abbr        mixi Android SDK CallbackListener
 		@Override
 		public void onComplete(Bundle values) {
 			Log.v("${1}", "CallbackListener#onComplete()");
-			Log.v("", "response:" + values.getString("response"));
+			Log.v("$1", "response:" + values.getString("response"));
 		}
 
 		@Override
 		public void onCancel() {
-			Log.v("", "CallbackListener#onCancel()");
+			Log.v("$1", "CallbackListener#onCancel()");
 		}
 
 		@Override
 		public void onFatal(ErrorInfo e) {
-			Log.v("", "CallbackListener#onFatal()");
-			Log.v("", MixiHelper.dumpErrorInfo(e));
+			Log.v("$1", "CallbackListener#onFatal()");
+			Log.v("$1", MixiHelper.dumpErrorInfo(e));
 		}
 
 		@Override
 		public void onError(ErrorInfo e) {
-			Log.v("", "CallbackListener#onError()");
-			Log.v("", MixiHelper.dumpErrorInfo(e));
+			Log.v("$1", "CallbackListener#onError()");
+			Log.v("$1", MixiHelper.dumpErrorInfo(e));
 		}
 	}${0}
 
 snippet     activity
 abbr        Android Activity
 prev_word   '^'
-	public class ${1}Activity extends Activity {
+	public class ${1} extends Activity {
 
 		/**
 		 * {@inheritDoc}
 		 * @see Activity#onCreate(Bundle)
 		 */
+		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.${2:layout});
+			Log.v("${2}", "[$1] onCreate()");
+			setContentView(R.layout.${3:layout});
 		}
 
 		/**
 		 * {@inheritDoc}
 		 * @see Activity#onResume()
 		 */
+		@Override
 		protected void onResume() {
+			Log.v("${2}", "[$1] onResume()");
 			super.onResume();
 		}
 
@@ -256,7 +250,9 @@ prev_word   '^'
 		 * {@inheritDoc}
 		 * @see Activity#onPause()
 		 */
+		@Override
 		protected void onPause() {
+			Log.v("${2}", "[$1] onPause()");
 			super.onPause();
 		}
 
@@ -264,7 +260,9 @@ prev_word   '^'
 		 * {@inheritDoc}
 		 * @see Activity#onDestroy()
 		 */
+		@Override
 		protected void onDestroy() {
+			Log.v("${2}", "[$1] onDestroy()");
 			super.onDestroy();
 		}
 	}
@@ -274,20 +272,20 @@ abbr        pochi Android SDK CallbackListener
 	new Pochi.CallbackListener() {
 		@Override
 		public void onComplete(JSONObject json) {
-			Logger.log("CallbackListener#onComplete()");
-			Logger.log("json:" + json.toString());
+			Log.v("${1}", "CallbackListener#onComplete()");
+			Log.v("$1", "json:" + json.toString());
 		}
 
 		@Override
 		public void onFatal(ErrorInfo e) {
-			Logger.log("CallbackListener#onFatal()");
-			Logger.log(e.toString());
+			Log.v("$1", "CallbackListener#onFatal()");
+			Log.v("$1", e.toString());
 		}
 
 		@Override
 		public void onError(int code, String message) {
-			Logger.log("CallbackListener#onError()");
-			Logger.log("" + code + ":" + message);
+			Log.v("$1", "CallbackListener#onError()");
+			Log.v("$1", "" + code + ":" + message);
 		}
 	}${0}
 
@@ -302,19 +300,23 @@ prev_word   '^'
 		 * {@inheritDoc}
 		 * @see Fragment#onCreate(Bundle)
 		 */
+		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			Logger.log("[$1] onCreate()");
+			Log.v("${2}", "[$1] onCreate()");
+
+			mActivity = getActivity();
 		}
 
 		/**
 		 * {@inheritDoc}
 		 * @see Fragment#onCreateView(LayoutInflater,ViewGroup,Bundle)
 		 */
+		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			Logger.log("[$1] onCreateView()");
-			View layout = inflater.inflate(R.layout.${2}, container, false);
+			Log.v("$2", "[$1] onCreateView()");
+			View layout = inflater.inflate(R.layout.${3}, container, false);
 			return layout;
 		}
 
@@ -322,36 +324,85 @@ prev_word   '^'
 		 * {@inheritDoc}
 		 * @see Fragment#onActivityCreated(Bundle)
 		 */
+		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
-			Logger.log("[$1] onActivityCreated()");
-
-			mActivity = getActivity();
+			Log.v("$2", "[$1] onActivityCreated()");
 		}
 
 		/**
 		 * {@inheritDoc}
 		 * @see Fragment#onResume()
 		 */
+		@Override
 		public void onResume() {
 			super.onResume();
-			Logger.log("[$1] onResume()");
+			Log.v("$2", "[$1] onResume()");
 		}
 
 		/**
 		 * {@inheritDoc}
 		 * @see Fragment#onPause()
 		 */
+		@Override
 		public void onPause() {
 			super.onPause();
-			Logger.log("[$1] onPause()");
+			Log.v("$2", "[$1] onPause()");
 		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see Fragment#onDestroyView()
+		 */
+		@Override
+		public void onDestroyView() {
+			super.onDestroyView();
+			Log.v("$2", "[$1] onDestroyView()");
+		}
+
 		/**
 		 * {@inheritDoc}
 		 * @see Fragment#onDestroy()
 		 */
+		@Override
 		public void onDestroy() {
-			Logger.log("[$1] onDestroy()");
+			Log.v("$2", "[$1] onDestroy()");
 			super.onDestroy();
 		}
 	}
+
+snippet     setOnClickListenerView
+abbr        Android setOnClickListener(View.OnclickListener)
+	setOnClickListener(new View.OnClickListener() {
+		@Override
+		public void onClick(View view) {
+			${0}
+		}
+	});
+
+snippet     FragmentDialog
+abbr        Android Dialog extends BaseDialogFragment
+	public class ${1} extends BaseDialogFragment {
+
+		public static final String TAG = "${2}";
+
+		/**
+		 * {@inheritDoc}
+		 * @see android.support.v4.app.DialogFragment#onCreateDialog(Bundle)
+		 */
+		@Override
+		public Dialog onCreateDialog(Bundle state) {
+			Dialog dialog = new Dialog(mActivity, mTheme) {
+				@Override
+				public void onCreate(Bundle bundle) {
+					super.onCreate(bundle);
+
+					requestWindowFeature(Window.FEATURE_NO_TITLE);
+					setContentView(R.layout.${3});
+				}
+			};
+			return dialog;
+		}
+	}
+
+
