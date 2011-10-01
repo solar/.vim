@@ -1,8 +1,1 @@
-bundle/eclim/eclim/doc/tags
-bundle/eclim/eclim/doc/*/tags
-bundle/eclim/eclim/doc/vim/*/tags
-bundle/eclim/eclim/doc/vim/java/*/tags
-bundle/eclim/eclim/doc/development/tags
-bundle/eclim/eclim/doc/guides/clojure/tags
-bundle/eclim/eclim/doc/translations/zh_TW/tags
-bundle/eclim/eclim/doc/translations/zh_TW/vim/tags
+bundle/eclim

@@ -40,3 +40,6 @@
 [submodule "bundle/unite-outline"]
 	path = bundle/unite-outline
 	url = git://github.com/solar/unite-outline.git
+[submodule "bundle/vim-addon-sbt"]
+	path = bundle/vim-addon-sbt
+	url = git://github.com/MarcWeber/vim-addon-sbt.git
