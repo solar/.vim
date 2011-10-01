@@ -52,3 +52,6 @@
 [submodule "bundle/tlib"]
 	path = bundle/tlib
 	url = git://github.com/tomtom/tlib_vim.git
+[submodule "bundle/vim-addon-manager"]
+	path = bundle/vim-addon-manager
+	url = git://github.com/MarcWeber/vim-addon-manager.git
