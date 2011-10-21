@@ -36,7 +36,7 @@
 	url = git://github.com/tacroe/unite-mark.git
 [submodule "bundle/git-vim"]
 	path = bundle/git-vim
-	url = git://github.com/solar/git-vim.git
+	url = git@github.com:solar/git-vim.git
 [submodule "bundle/unite-outline"]
 	path = bundle/unite-outline
 	url = git://github.com/solar/unite-outline.git
