@@ -139,7 +139,7 @@ let g:neocomplcache_disable_auto_select_buffer_name_pattern = ''
 " ニペット補完ファイルは標準のスニペット補完ファイルを読み込ん
 " だ後に読み込まれる。 重複したスニペットは上書きされる。
 " この変数はユーザが自分で定義しない限り存在しない。
-let g:neocomplcache_snippets_dir = expand("~/.vim/snippets")
+let g:neocomplcache_snippets_dir = expand("~/vimfiles/snippets")
 
 " neocomplcacheが一時ファイルを書き出すディレクトリを指定する。
 " ここで指定したディレクトリが実際に存在しない場合、作成される。
