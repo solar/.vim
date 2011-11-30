@@ -257,11 +257,7 @@ let g:neocomplcache_disable_select_mode_mappings = 1
 " include_completeなどがタグ生成に使用するctagsコマンドへのパスを指定する。
 
 " 初期値は"ctags"である。
-if has('unix')
-    let g:neocomplcache_ctags_program = 'ctags'
-else
-    let g:neocomplcache_ctags_program = 'c:\tools\bin\ctags.exe'
-endif
+let g:neocomplcache_ctags_program = "ctags"
 
 " g:neocomplcache_ctags_arguments_list *g:neocomplcache_ctags_arguments_list*
 " include_completeなどがctagsコマンドを使用する際に、コマンドの
