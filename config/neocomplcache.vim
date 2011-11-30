@@ -22,7 +22,7 @@ let g:neocomplcache_max_keyword_width = 50
 
 " ポップアップメニューで表示されるファイル名の表示幅を制御する。
 " これを超えた場合は切り詰められる。
-let g:neocomplcache_max_filename_width = 15
+let g:neocomplcache_max_menu_width = 15
 
 " キー入力時にキーワード補完を行う入力数を制御する。
 let g:neocomplcache_auto_completion_start_length = 2
@@ -54,11 +54,6 @@ let g:neocomplcache_disable_auto_complete = 0
 " 制御する。 1ならばワイルドカードが使用できる。
 " 初期値は1なので、ワイルドカードが有効になっている。
 let g:neocomplcache_enable_wildcard = 1
-
-" 省入力のために、-を入力すると候補の横に表示される英数字で候
-" 補を選択できるようにするかを制御する。 1ならば有効になる。
-" 初期値は0なので、無効になっている。
-let g:neocomplcache_enable_quick_match = 0
 
 " 候補の計算を|CursorHoldI|イベント時に行うかどうかを制御する。
 " このオプションが設定されなかった場合、|CursorMovedI|イベン

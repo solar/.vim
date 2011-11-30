@@ -3,7 +3,7 @@
 "
 
 if has('win32') || has('win64')
-    let g:git_bin = 'c:/tools/git/bin/git.exe'
+    let g:git_bin = 'c:/tools/msysgit/bin/git.exe'
 else
     let g:git_bin = 'git'
 endif

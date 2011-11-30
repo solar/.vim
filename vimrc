@@ -1,4 +1,4 @@
-"
+
 " vimrc
 "
 
@@ -23,7 +23,7 @@ set history=100
 set runtimepath+=$HOME/.vim,$HOME/.vim/after
 
 if has('win32') || has('win64')
-    set directory=c:\tmp
+    set directory=c:\data\Temp
 else
     set directory=~/tmp
 endif
@@ -83,7 +83,7 @@ set foldclose=
 " バックアップ {{{
 set backup
 if has('win32') || has('win64')
-    set backupdir=C:\tmp
+    set backupdir=C:\data\Temp
 else
     set backupdir=~/tmp
 endif
@@ -252,17 +252,6 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" kaoriya版
-if has('kaoriya')
-  if exists('&ambiwidth')
-    set ambiwidth=auto
-  endif
-  if has('guess_encode')
-    set fileencodings=guess
-  endif
-endif
-" }}}
-
 " プラグイン {{{
 " pathogen
 call pathogen#runtime_append_all_bundles()
@@ -327,11 +316,11 @@ let format_allow_over_tw = 1
 
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
-au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
-au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
+"au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
 " }}}
 
 " PHP {{{
@@ -340,6 +329,10 @@ au MyAutoCmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " Python {{{
 au MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" }}}
+
+" Scala {{{
+au MyAutoCmd BufRead,BufNewFile *.{scala,sbt} set filetype=scala
 " }}}
 
 " その他 {{{
