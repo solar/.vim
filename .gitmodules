@@ -43,3 +43,6 @@
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
 	url = git://github.com/derekwyatt/vim-scala.git
+[submodule "bundle/vundle"]
+	path = bundle/vundle
+	url = http://github.com/gmarik/vundle.git
