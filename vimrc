@@ -278,6 +278,7 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+" }}}
 
 " プラグイン {{{
 
@@ -287,8 +288,8 @@ source $HOME/.vim/config/neocomplcache.vim
 " Unite
 source $HOME/.vim/config/unite.vim
 
-" Git-Vim
-"source $HOME/.vim/config/git-vim.vim
+" fugitive
+source $HOME/.vim/config/fugitive.vim
 
 " scalacommenter
 source $HOME/.vim/config/scalacommenter.vim
