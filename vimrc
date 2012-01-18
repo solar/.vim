@@ -5,8 +5,36 @@
 " 初期化 {{{
 let $LANG = "ja_JP.UTF-8"
 set encoding=utf-8
+" }}}
 
-" augroupの設定
+" Vundle {{{
+filetype off
+set rtp+=$HOME/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimfiler'
+Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'tacroe/unite-mark'
+Bundle 'sgur/unite-qf'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'kana/vim-textobj-user'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'eregex.vim'
+Bundle 'Align.vim'
+Bundle 'scalacommenter.vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'xmledit'
+
+filetype plugin indent on
+" }}}
+
+" augroup
 aug MyAutoCmd
     au!
 aug END
@@ -14,7 +42,6 @@ aug END
 
 " 基本設定 {{{
 syntax on
-filetype plugin indent on
 set modeline
 set iminsert=0
 set imsearch=0
@@ -252,9 +279,18 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+" kaoriya版
+" if has('kaoriya')
+  " if exists('&ambiwidth')
+    " set ambiwidth=auto
+  " endif
+  " if has('guess_encode')
+    " set fileencodings=guess
+  " endif
+" endif
+" }}}
+
 " プラグイン {{{
-" pathogen
-call pathogen#runtime_append_all_bundles()
 
 " NeoComplCache
 source $HOME/.vim/config/neocomplcache.vim
@@ -263,7 +299,10 @@ source $HOME/.vim/config/neocomplcache.vim
 source $HOME/.vim/config/unite.vim
 
 " Git-Vim
-source $HOME/.vim/config/git-vim.vim
+"source $HOME/.vim/config/git-vim.vim
+
+" scalacommenter
+source $HOME/.vim/config/scalacommenter.vim
 
 " Taglist {{{
 if has('win32') || has('win64')
@@ -296,21 +335,19 @@ vmap <Space>/s <Plug>NERDCommenterSexy
 vmap <Space>/b <Plug>NERDCommenterMinimal
 " }}}
 
-" eclim {{{
-nmap        <Space>J        <SID>[java]
-nnoremap    <SID>[java]dc   :<C-u>JavaDocComment<CR>
-nnoremap    <SID>[java]I    :<C-u>JavaImportMissing<CR>
-nnoremap    <SID>[java]i    :<C-u>JavaImport<CR>
-nnoremap    <SID>[java]p    :<C-u>JavaImpl<CR>
-nnoremap    <SID>[java]c    :<C-u>JavaConstructor<CR>
-nnoremap    <SID>[java]g    :<C-u>JavaGet<CR>
-nnoremap    <SID>[java]s    :<C-u>JavaSet<CR>
+" easymotion {{{
+let g:EasyMotion_leader_key = '<Space><Space>'
 " }}}
 
-" その他 {{{
 " format.vim {{{
 let format_allow_over_tw = 1
 " }}}
+
+" eregex {{{
+nnoremap / :M/
+nnoremap ? :M?
+nnoremap ,/ /
+nnoremap ,? ?
 " }}}
 " }}}
 
