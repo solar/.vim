@@ -25,7 +25,7 @@ Bundle 'sgur/unite-qf'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kana/vim-textobj-user'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'eregex.vim'
+Bundle 'othree/eregex.vim'
 Bundle 'Align.vim'
 Bundle 'scalacommenter.vim'
 Bundle 'derekwyatt/vim-scala'
@@ -279,17 +279,6 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" kaoriya版
-" if has('kaoriya')
-  " if exists('&ambiwidth')
-    " set ambiwidth=auto
-  " endif
-  " if has('guess_encode')
-    " set fileencodings=guess
-  " endif
-" endif
-" }}}
-
 " プラグイン {{{
 
 " NeoComplCache
@@ -303,20 +292,6 @@ source $HOME/.vim/config/unite.vim
 
 " scalacommenter
 source $HOME/.vim/config/scalacommenter.vim
-
-" Taglist {{{
-if has('win32') || has('win64')
-    let Tlist_Ctags_Cmd = 'c:\tools\bin\ctags.exe'
-else
-    let Tlist_Ctags_Cmd = 'ctags'
-endif
-let Tlist_WinWidth = 20
-let Tlist_Auto_Open = 0
-let Tlist_Compact_Format = 1
-let Tlist_Show_One_File = 1
-let Tlist_Exit_OnlyWindow = 1
-nnoremap <silent> <F8> :TlistToggle<CR>
-" }}}
 
 " VimFiler {{{
 let g:vimfiler_as_default_explorer = 1
@@ -379,4 +354,3 @@ au MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 au MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " }}}
 " }}}
-
