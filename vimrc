@@ -24,9 +24,10 @@ Bundle 'tacroe/unite-mark'
 Bundle 'sgur/unite-qf'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-indent'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/eregex.vim'
-Bundle 'Align.vim'
+Bundle 'Align'
 Bundle 'scalacommenter.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'xmledit'
@@ -99,6 +100,8 @@ endif
 if &term == 'cygwin'
     colorscheme desert
 endif
+set previewheight=26
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " }}}
 
 " 折りたたみ {{{
