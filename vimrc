@@ -7,30 +7,32 @@ let $LANG = "ja_JP.UTF-8"
 set encoding=utf-8
 " }}}
 
-" Vundle {{{
+" NeoBundle {{{
 filetype off
-set rtp+=$HOME/.vim/bundle/vundle
-call vundle#rc()
+if has('vim_starting')
+    set rtp+=$HOME/.vim/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimfiler'
-Bundle 'Shougo/unite.vim'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'tacroe/unite-mark'
-Bundle 'sgur/unite-qf'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'othree/eregex.vim'
-Bundle 'Align'
-Bundle 'scalacommenter.vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'xmledit'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'tacroe/unite-mark'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'Align'
+NeoBundle 'scalacommenter.vim'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'xmledit'
 
 filetype plugin indent on
 " }}}
@@ -332,8 +334,10 @@ nnoremap ,? ?
 
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
-au MyAutoCmd BufEnter *.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter {.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter c:/*.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter d:/*.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter c:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter d:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 "au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
