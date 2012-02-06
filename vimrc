@@ -53,7 +53,11 @@ set history=100
 
 set runtimepath+=$HOME/.vim,$HOME/.vim/after
 
-set directory=c:/tmp
+if has('win32') || has('win64')
+    set directory=c:/tmp
+else
+    set directory=~/tmp
+endif
 " }}}
 
 " 検索 {{{
