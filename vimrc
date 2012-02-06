@@ -1,4 +1,4 @@
-
+"
 " vimrc
 "
 
@@ -20,6 +20,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'tsukkee/unite-help'
@@ -283,6 +284,7 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+set termencoding=utf-8
 " }}}
 
 " プラグイン {{{
@@ -335,9 +337,7 @@ nnoremap ,? ?
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
 au MyAutoCmd BufEnter c:/*.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter d:/*.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter c:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter d:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 "au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
