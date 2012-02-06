@@ -53,11 +53,7 @@ set history=100
 
 set runtimepath+=$HOME/.vim,$HOME/.vim/after
 
-if has('win32') || has('win64')
-    set directory=c:\data\Temp
-else
-    set directory=~/tmp
-endif
+set directory=c:/tmp
 " }}}
 
 " 検索 {{{
@@ -103,8 +99,7 @@ endif
 if &term == 'cygwin'
     colorscheme desert
 endif
-set previewheight=26
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set pvh=26
 " }}}
 
 " 折りたたみ {{{
@@ -116,7 +111,7 @@ set foldclose=
 " バックアップ {{{
 set backup
 if has('win32') || has('win64')
-    set backupdir=C:\data\Temp
+    set backupdir=c:/tmp
 else
     set backupdir=~/tmp
 endif
