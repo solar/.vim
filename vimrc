@@ -31,7 +31,6 @@ NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'Align'
-NeoBundle 'scalacommenter.vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'xmledit'
 
