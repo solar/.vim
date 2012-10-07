@@ -53,9 +53,9 @@ set history=100
 set runtimepath+=$HOME/.vim,$HOME/.vim/after
 
 if has('win32') || has('win64')
-    set directory=c:/tmp
+    set directory=c:/tmp/vim
 else
-    set directory=~/tmp
+    set directory=~/tmp/vim
 endif
 " }}}
 
@@ -114,9 +114,9 @@ set foldclose=
 " バックアップ {{{
 set backup
 if has('win32') || has('win64')
-    set backupdir=c:/tmp
+    set backupdir=c:/tmp/vim/backup
 else
-    set backupdir=~/tmp
+    set backupdir=~/tmp/vim/backup
 endif
 " }}}
 
