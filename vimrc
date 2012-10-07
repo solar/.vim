@@ -11,8 +11,8 @@ set nocompatible
 " NeoBundle {{{
 filetype off
 if has('vim_starting')
-    set rtp+=$HOME/.vim/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle'))
+    set rtp+=$HOME/.vim/bundle/neobundle.vim/
+    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
 NeoBundle 'tpope/vim-fugitive'
