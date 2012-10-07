@@ -334,7 +334,8 @@ nnoremap ,? ?
 
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
-au MyAutoCmd BufEnter c:/*.{java,php,html,txt,css,js,htm,xml,tpl,rb,py,pl,cgi,vim,scala,sbt} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter c:/*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter c:/*.{txt,htm,html,css,js,xml,vim,sql,conf,properties} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter c:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
