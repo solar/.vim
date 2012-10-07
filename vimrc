@@ -5,6 +5,7 @@
 " 初期化 {{{
 let $LANG = "ja_JP.UTF-8"
 set encoding=utf-8
+set nocompatible
 " }}}
 
 " NeoBundle {{{
