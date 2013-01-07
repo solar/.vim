@@ -34,6 +34,10 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'Align'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'xmledit'
+NeoBundle 'python.vim'
+NeoBundle 'paulyg/Vim-PHP-Stuff'
+NeoBundle 'nginx.vim'
+NeoBundle 'haproxy'
 
 filetype plugin indent on
 " }}}
@@ -169,9 +173,6 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sH <C-w>H
 nnoremap sL <C-w>L
-
-" ヘルプ
-nnoremap <C-h>  :<C-u>help<Space>
 
 " 補完内移動
 inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -332,9 +333,9 @@ nnoremap ,? ?
 
 " ファイルタイプ {{{
 " 編集時にファイルの存在するディレクトリに移動
-au MyAutoCmd BufEnter c:/*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter c:/*.{txt,htm,html,css,js,xml,vim,sql,conf,properties} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter c:/*{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h,sh} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*.{txt,htm,html,css,js,xml,vim,sql,conf,properties,yaml,yml} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*/{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
 "au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
