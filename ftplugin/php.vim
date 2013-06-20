@@ -1,6 +1,6 @@
-set ts=4
-set sw=4
-set sts=4
+setl ts=4
+setl sw=4
+setl sts=4
 
-set makeprg=php\ -l\ %
-set errorformat=%m\ in\ %f\ on\ line\ %l
+setl makeprg=php\ -l\ %
+setl errorformat=%m\ in\ %f\ on\ line\ %l

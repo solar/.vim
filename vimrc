@@ -35,9 +35,13 @@ NeoBundle 'Align'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'xmledit'
 NeoBundle 'python.vim'
-NeoBundle 'paulyg/Vim-PHP-Stuff'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'rhysd/clever-f.vim'
+
+" sytnax only
 NeoBundle 'nginx.vim'
 NeoBundle 'haproxy'
+NeoBundle 'paulyg/Vim-PHP-Stuff'
 
 filetype plugin indent on
 " }}}
@@ -186,6 +190,10 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " Yで行末までヤンク
 nnoremap Y y$
+
+" Quickfix
+nnoremap <Space>qn :<C-u>cnext<CR>
+nnoremap <Space>qN :<C-u>cNext<CR>
 
 " }}}
 
