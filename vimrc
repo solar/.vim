@@ -15,6 +15,8 @@ if has('vim_starting')
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
@@ -44,6 +46,8 @@ NeoBundle 'haproxy'
 NeoBundle 'paulyg/Vim-PHP-Stuff'
 
 filetype plugin indent on
+
+NeoBundleCheck
 " }}}
 
 " augroup
@@ -61,7 +65,9 @@ set history=100
 
 set runtimepath+=$HOME/.vim,$HOME/.vim/after
 
-if has('win32') || has('win64')
+if has('win32unix') || has('win64unix')
+    set directory=~/tmp/vim
+elseif has('win32') || has('win64')
     set directory=c:/tmp/vim
 else
     set directory=~/tmp/vim
@@ -122,7 +128,9 @@ set foldclose=
 
 " バックアップ {{{
 set backup
-if has('win32') || has('win64')
+if has('win32unix') || has('win64unix')
+    set backupdir=~/tmp/vim/backup
+elseif has('win32') || has('win64')
     set backupdir=c:/tmp/vim/backup
 else
     set backupdir=~/tmp/vim/backup
