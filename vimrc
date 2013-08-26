@@ -17,6 +17,7 @@ endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
