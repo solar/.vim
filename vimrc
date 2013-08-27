@@ -17,6 +17,7 @@ endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -24,10 +25,11 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'tsukkee/unite-help'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kana/vim-textobj-user'
@@ -352,6 +354,7 @@ nnoremap ,? ?
 " 編集時にファイルの存在するディレクトリに移動
 au MyAutoCmd BufEnter /*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h,sh} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter /*.{txt,htm,html,css,js,xml,vim,sql,conf,properties,yaml,yml} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*.{gradle,groovy,ini,cfg,less,coffee} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter /*/{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
 
 " Java {{{
