@@ -42,6 +42,8 @@ NeoBundle 'xmledit'
 NeoBundle 'python.vim'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'groovy.vim'
+NeoBundle 'tfnico/vim-gradle'
 
 " sytnax only
 NeoBundle 'nginx.vim'
