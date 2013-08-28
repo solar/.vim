@@ -137,6 +137,7 @@ if has('win32unix') || has('win64unix')
     set backupdir=~/tmp/vim/backup
 elseif has('win32') || has('win64')
     set backupdir=c:/tmp/vim/backup
+    set backupcopy=yes
 else
     set backupdir=~/tmp/vim/backup
 endif
@@ -349,6 +350,13 @@ nnoremap / :M/
 nnoremap ? :M?
 nnoremap ,/ /
 nnoremap ,? ?
+" }}}
+
+" vim-airline {{{
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 80,
+    \ 'y': 80
+    \ }
 " }}}
 " }}}
 
