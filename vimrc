@@ -17,7 +17,6 @@ endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -357,6 +356,10 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 80,
     \ 'y': 80
     \ }
+" }}}
+
+" syntastic {{{
+let g:syntastic_java_javac_args="-Dfile.encoding=utf-8"
 " }}}
 " }}}
 
