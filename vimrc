@@ -319,6 +319,12 @@ source $HOME/.vim/config/unite.vim
 " fugitive
 source $HOME/.vim/config/fugitive.vim
 
+" vim-airline
+source $HOME/.vim/config/vim-airline.vim
+
+" syntastic
+source $HOME/.vim/config/syntastic.vim
+
 " VimFiler {{{
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_trashbox_directory = expand("~/.vimfiler_trashbox")
