@@ -50,7 +50,7 @@ NeoBundle 'haproxy'
 NeoBundle 'paulyg/Vim-PHP-Stuff'
 
 " colorschemes
-NeoBundle 'jonathansfilip/vim-lucius'
+NeoBundle 'jonathanfilip/vim-lucius'
 
 filetype plugin indent on
 
