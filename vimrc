@@ -49,6 +49,9 @@ NeoBundle 'nginx.vim'
 NeoBundle 'haproxy'
 NeoBundle 'paulyg/Vim-PHP-Stuff'
 
+" colorschemes
+NeoBundle 'jonathansfilip/vim-lucius'
+
 filetype plugin indent on
 
 NeoBundleCheck
@@ -103,6 +106,8 @@ set formatoptions+=mM
 
 " 画面 {{{
 colorscheme lucius
+set background=dark
+
 set number
 set ruler
 set list
