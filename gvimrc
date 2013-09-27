@@ -3,7 +3,7 @@
 "
 
 " 表示 {{{
-colorscheme lucius
+colorscheme hybrid
 set background=dark
 
 set guifont=Consolas:h10:cSHIFTJIS

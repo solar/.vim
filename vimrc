@@ -51,6 +51,9 @@ NeoBundle 'paulyg/Vim-PHP-Stuff'
 
 " colorschemes
 NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
@@ -105,9 +108,6 @@ set formatoptions+=mM
 " }}}
 
 " 画面 {{{
-colorscheme lucius
-set background=dark
-
 set number
 set ruler
 set list
@@ -118,6 +118,7 @@ set cmdheight=2
 set showcmd
 set title
 set virtualedit+=block
+set cursorline
 set winwidth=30
 set winminwidth=30
 if &term == 'screen'
@@ -127,6 +128,8 @@ if &term == 'cygwin'
     colorscheme desert
 endif
 set pvh=26
+
+colorscheme hybrid
 " }}}
 
 " 折りたたみ {{{
