@@ -118,7 +118,6 @@ set cmdheight=2
 set showcmd
 set title
 set virtualedit+=block
-set cursorline
 set winwidth=30
 set winminwidth=30
 if &term == 'screen'
