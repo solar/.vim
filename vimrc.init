@@ -1,0 +1,15 @@
+let $LANG = "ja_JP.UTF-8"
+set encoding=utf-8
+set nocompatible
+
+let g:is_cygwin = has('win32unix') || has('win64unix')
+let g:is_windows = (has('win32') || has('win64')) && !g:is_cygwin
+let g:is_unix = has('unix') || !g:is_cygwin
+
+if g:is_cygwin
+    let g:user_tmpdir = expand('~/tmp/vim')
+elseif g:is_windows
+    let g:user_tmpdir = expand('c:/tmp/vim')
+else
+    let g:user_tmpdir = expand('~/tmp/vim')
+endif

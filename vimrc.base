@@ -1,0 +1,34 @@
+aug MyAutoCmd
+    au!
+aug END
+
+syntax on
+set modeline
+set iminsert=0
+set imsearch=0
+set history=100
+
+set runtimepath+=$HOME/.vim,$HOME/.vim/after
+let &directory=g:user_tmpdir
+
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+set autoindent
+set smartindent
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set backspace=indent,eol,start
+set showmatch
+set wrapscan
+set wildmenu
+set tags=tags;
+set formatoptions&
+set formatoptions+=mM
+
+set backup
+let &backupdir=g:user_tmpdir . '/backup'

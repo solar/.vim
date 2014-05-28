@@ -1,0 +1,11 @@
+source $HOME/.vim/config/neocomplete.vim
+source $HOME/.vim/config/neosnippet.vim
+source $HOME/.vim/config/unite.vim
+source $HOME/.vim/config/fugitive.vim
+source $HOME/.vim/config/lightline.vim
+source $HOME/.vim/config/syntastic.vim
+source $HOME/.vim/config/vimfiler.vim
+source $HOME/.vim/config/nerdcommenter.vim
+source $HOME/.vim/config/easymotion.vim
+source $HOME/.vim/config/format.vim
+source $HOME/.vim/config/eregex.vim

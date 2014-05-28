@@ -1,0 +1,26 @@
+set number
+set ruler
+set list
+set listchars=tab:>-,trail:-
+set wrap
+set laststatus=2
+set cmdheight=2
+set showcmd
+set title
+set virtualedit+=block
+set winwidth=30
+set winminwidth=30
+if &term == 'screen'
+    let &t_Co=256
+endif
+if &term == 'cygwin'
+    colorscheme desert
+endif
+set pvh=26
+
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+
+set foldmethod=marker
+set foldopen=hor
+set foldclose=

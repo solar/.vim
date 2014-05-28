@@ -1,0 +1,55 @@
+filetype off
+if has('vim_starting')
+    set rtp+=$HOME/.vim/bundle/neobundle.vim/
+    call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Align'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'tacroe/unite-mark'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'xmledit'
+
+" filetype plugins
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'groovy.vim'
+NeoBundle 'haproxy'
+NeoBundle 'nginx.vim'
+NeoBundle 'paulyg/Vim-PHP-Stuff'
+NeoBundle 'python.vim'
+NeoBundle 'slim-template/vim-slim'
+NeoBundle 'tfnico/vim-gradle'
+NeoBundle 'theevocater/thrift.vim'
+
+" colorschemes
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+
+filetype plugin indent on
+
+NeoBundleCheck

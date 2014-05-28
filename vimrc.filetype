@@ -1,0 +1,20 @@
+" 編集時にファイルの存在するディレクトリに移動
+au MyAutoCmd BufEnter /*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h,sh} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*.{txt,htm,html,css,js,xml,vim,sql,conf,properties,yaml,yml} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*.{gradle,groovy,ini,cfg,less,coffee} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter /*/{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,.gitignore} execute ":lcd " . expand("%:p:h")
+
+" Java
+"au MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" PHP
+au MyAutoCmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+
+" Python
+au MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" その他
+au MyAutoCmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+au MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+au MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
