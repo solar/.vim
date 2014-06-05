@@ -3,6 +3,8 @@
 " '         - unite
 " <Space>q  - quickfix
 
+let maplerader = '-'
+
 nnoremap <C-E> g<C-]>
 
 nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>

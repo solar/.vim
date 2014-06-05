@@ -15,7 +15,14 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build': {
+            \   'windows': 'make -f make_mingw32.mak',
+            \   'cygwin': 'make -f make_cygwin.mak',
+            \   'mac': 'make -f make_mac.mak',
+            \   'unix': 'make -f make_unix.mak',
+            \ },
+            \}
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
@@ -42,6 +49,10 @@ NeoBundle 'python.vim'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'theevocater/thrift.vim'
+NeoBundle 'dotcloud/docker',
+            \ {'rtp': '~/.vim/bundle/docker/contrib/syntax/vim'}
+
+NeoBundle 'fatih/vim-go'
 
 " colorschemes
 NeoBundle 'jonathanfilip/vim-lucius'
