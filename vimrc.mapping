@@ -37,6 +37,7 @@ nnoremap <Space>l $
 nnoremap <Space>m %
 
 " タブページを使いやすく
+nnoremap <SID>[tab] <Nop>
 nmap <C-t>  <SID>[tab]
 nnoremap <SID>[tab]n :<C-u>tabnew<CR>
 nnoremap <SID>[tab]c :<C-u>tabclose<CR>
@@ -51,6 +52,7 @@ for n in range(1, 9)
 endfor
 
 " タグを使いやすく
+nnoremap <SID>[tag] <Nop>
 nmap t  <SID>[tag]
 nnoremap <SID>[tag]t <C-]>
 nnoremap <SID>[tag]j :<C-u>tag<CR>

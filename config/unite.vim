@@ -14,7 +14,8 @@ nnoremap <SID>[unite]u :<C-u>Unite
 nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
 nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
 nnoremap <SID>[unite]f :<C-u>Unite file<CR>
-nnoremap <SID>[unite]t :<C-u>Unite tab<CR>
+nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
 nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
 nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
 nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
