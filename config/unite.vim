@@ -14,7 +14,9 @@ nnoremap <SID>[unite]u :<C-u>Unite
 nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
 nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
 nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+nnoremap <SID>[unite]H :<C-u>Unite help<CR>
 nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
 nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
 nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
 nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
@@ -59,4 +61,7 @@ function! s:unite_my_settings()
     " <C-l>: manual neocomplcache completion.
     " inoremap <buffer> <C-l> <C-x><C-u><C-p><Down>
 endfunction
-"
+
+" unite-tag
+let g:unite_source_tag_max_name_length = 25
+let g:unite_source_tag_max_fname_length = 130
