@@ -24,7 +24,7 @@ nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
 nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
 nnoremap <SID>[unite]r :<C-u>Unite register<CR>
 nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
-nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', g:user_grep_targets]], {'no-quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})
+nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', g:user_grep_targets]], {'no-quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})<CR>
 
 " source設定
 " file
