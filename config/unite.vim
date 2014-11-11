@@ -57,9 +57,6 @@ function! s:unite_my_settings()
     imap <buffer> <C-j> <Plug>(unite_select_next_line)
     imap <buffer> <C-k> <Plug>(unite_select_previous_line)
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-
-    " <C-l>: manual neocomplcache completion.
-    " inoremap <buffer> <C-l> <C-x><C-u><C-p><Down>
 endfunction
 
 " unite-tag

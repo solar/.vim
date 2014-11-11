@@ -27,6 +27,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'scrooloose/nerdcommenter'
