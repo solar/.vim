@@ -1,8 +1,9 @@
 filetype off
 if has('vim_starting')
     set rtp+=$HOME/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -17,12 +18,12 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
             \ 'build': {
-            \   'windows': 'make -f make_mingw32.mak',
             \   'cygwin': 'make -f make_cygwin.mak',
             \   'mac': 'make -f make_mac.mak',
             \   'unix': 'make -f make_unix.mak',
             \ },
             \}
+" \   'windows': 'make -f make_mingw32.mak',
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
@@ -39,6 +40,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'xmledit'
+NeoBundle 'sgur/unite-everything'
 
 " filetype plugins
 NeoBundle 'derekwyatt/vim-scala'
@@ -60,6 +62,8 @@ NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'altercation/vim-colors-solarized'
+
+call neobundle#end()
 
 filetype plugin indent on
 

@@ -18,7 +18,7 @@ nnoremap <SID>[unite]H :<C-u>Unite help<CR>
 nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
 nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
 nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
-nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
+nnoremap <SID>[unite]m :<C-u>Unite file_mru everything/async -start-insert<CR>
 nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
 nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
 nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
@@ -65,3 +65,12 @@ endfunction
 " unite-tag
 let g:unite_source_tag_max_name_length = 25
 let g:unite_source_tag_max_fname_length = 130
+
+" unite-everything
+let g:unite_source_everything_limit = 10000
+let g:unite_source_everything_full_path_search = 1
+let g:unite_source_everything_ignore_pattern =
+            \'\%(^\|/\)\.\.\?$\|\~$\|\.\%(git\|hg\|svn\|neocon\|cache\)\|\$Recycle\.Bin\|\.\%(o\|exe\|dll\|bak\|DS_Store\|pyc\|zwc\|sw[po]\|class\)$\|build\/intermediates'
+
+
+

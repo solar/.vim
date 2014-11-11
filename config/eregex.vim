@@ -1,4 +1,4 @@
-nnoremap / :M/
-nnoremap ? :M?
-nnoremap ,/ /
-nnoremap ,? ?
+" nnoremap / :M/
+" nnoremap ? :M?
+" nnoremap ,/ /
+" nnoremap ,? ?

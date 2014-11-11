@@ -14,7 +14,7 @@ let &directory=g:user_tmpdir
 set incsearch
 set ignorecase
 set smartcase
-set hlsearch
+set nohlsearch
 
 set autoindent
 set smartindent
@@ -32,3 +32,5 @@ set formatoptions+=mM
 
 set backup
 let &backupdir=g:user_tmpdir . '/backup'
+
+let &undodir=g:user_tmpdir . '/undo'
