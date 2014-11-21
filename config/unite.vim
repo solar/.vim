@@ -18,13 +18,19 @@ nnoremap <SID>[unite]H :<C-u>Unite help<CR>
 nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
 nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
 nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
-nnoremap <SID>[unite]m :<C-u>Unite file_mru everything/async -start-insert<CR>
+
+if g:is_windows
+  nnoremap <SID>[unite]m :<C-u>Unite file_mru everything/async -start-insert<CR>
+else
+  nnoremap <SID>[unite]m :<C-u>Unite file_mru -start-insert<CR>
+endif
+
 nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
 nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
 nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
 nnoremap <SID>[unite]r :<C-u>Unite register<CR>
 nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
-nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', g:user_grep_targets]], {'no-quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})<CR>
+nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', g:user_grep_targets]], {'no_quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})<CR>
 
 " source設定
 " file

@@ -1,4 +1,1 @@
-" nnoremap / :M/
-" nnoremap ? :M?
-" nnoremap ,/ /
-" nnoremap ,? ?
+let g:eregex_default_enable = 0
