@@ -1,7 +1,7 @@
 " 編集時にファイルの存在するディレクトリに移動
 au MyAutoCmd BufEnter {?:,}/*.{java,php,tpl,rb,py,pl,cgi,scala,sbt,c,cpp,h,sh} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {?:,}/*.{txt,htm,html,css,js,xml,vim,vimrc,sql,conf} execute ":lcd " . expand("%:p:h")
-au MyAutoCmd BufEnter {?:,}/*.{properties,yaml,yml} execute ":lcd " . expand("%:p:h")
+au MyAutoCmd BufEnter {?:,}/*.{properties,yaml,yml,md,ini} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {?:,}/*.{gradle,groovy,ini,cfg,less,coffee} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {?:,}/*/{.vimrc,.gvimrc,_vimrc,_gvimrc,vimrc,gvimrc,vimrc.*} execute ":lcd " . expand("%:p:h")
 au MyAutoCmd BufEnter {?:,}/*/{.gitignore,Dockerfile,dockerfile} execute ":lcd " . expand("%:p:h")

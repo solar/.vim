@@ -11,9 +11,9 @@ let g:user_grep_targets = get(g:, 'user_grep_targets', [])
 nnoremap [unite] <Nop>
 nmap ' <SID>[unite]
 nnoremap <SID>[unite]u :<C-u>Unite
-nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
+nnoremap <SID>[unite]' :<C-u>Unite buffer file/async<CR>
 nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
-nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+nnoremap <SID>[unite]f :<C-u>Unite file_rec/async:!<CR>
 nnoremap <SID>[unite]H :<C-u>Unite help<CR>
 nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
 nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
@@ -21,6 +21,7 @@ nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
 
 if g:is_windows
   nnoremap <SID>[unite]m :<C-u>Unite file_mru everything/async -start-insert<CR>
+
 else
   nnoremap <SID>[unite]m :<C-u>Unite file_mru -start-insert<CR>
 endif
@@ -30,7 +31,8 @@ nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
 nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
 nnoremap <SID>[unite]r :<C-u>Unite register<CR>
 nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
-nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', g:user_grep_targets]], {'no_quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})<CR>
+nnoremap <SID>[unite]G :<C-u>call unite#start([['grep', unite#util#path2project_directory('%')]],
+            \ {'no_quit': 1, 'direction': 'botright', 'buffer-name': 'grep-buffer'})<CR>
 
 " source設定
 " file
@@ -50,6 +52,8 @@ if executable('ag')
                 \ '--hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' ' .
                 \ '--ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt = ''
+
+    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
 elseif executable('ack')
     let g:unite_source_grep_command = 'ack'
     let g:unite_source_grep_default_opts = '--no-heading --no-color -k -H'
@@ -74,6 +78,3 @@ let g:unite_source_everything_limit = 10000
 let g:unite_source_everything_full_path_search = 1
 let g:unite_source_everything_ignore_pattern =
             \'\%(^\|/\)\.\.\?$\|\~$\|\.\%(git\|hg\|svn\|neocon\|cache\)\|\$Recycle\.Bin\|\.\%(o\|exe\|dll\|bak\|DS_Store\|pyc\|zwc\|sw[po]\|class\)$\|build\/intermediates'
-
-
-
