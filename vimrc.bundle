@@ -42,6 +42,8 @@ NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'xmledit'
 NeoBundle 'sgur/unite-everything'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'kannokanno/previm'
 
 " filetype plugins
 NeoBundle 'derekwyatt/vim-scala'
