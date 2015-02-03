@@ -11,7 +11,7 @@ let g:user_grep_targets = get(g:, 'user_grep_targets', [])
 nnoremap [unite] <Nop>
 nmap ' <SID>[unite]
 nnoremap <SID>[unite]u :<C-u>Unite
-nnoremap <SID>[unite]' :<C-u>Unite buffer file/async<CR>
+nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
 nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
 nnoremap <SID>[unite]f :<C-u>Unite file_rec/async:!<CR>
 nnoremap <SID>[unite]H :<C-u>Unite help<CR>
