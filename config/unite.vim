@@ -5,19 +5,23 @@ let g:unite_enable_start_insert = 1
 let g:unite_winheight = 32
 let g:unite_data_directory = expand("~/.unite")
 
-let g:user_grep_targets = get(g:, 'user_grep_targets', [])
-
 " キーマッピング
 nnoremap [unite] <Nop>
 nmap ' <SID>[unite]
 nnoremap <SID>[unite]u :<C-u>Unite
 nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
 nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
-nnoremap <SID>[unite]f :<C-u>Unite file_rec/async:!<CR>
 nnoremap <SID>[unite]H :<C-u>Unite help<CR>
 nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
 nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
 nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
+
+nnoremap <silent> <SID>[unite]f
+        \ :<C-u>Unite -buffer-name=files -no-split
+        \ jump_point file_point buffer
+        \ file_rec:! file file/new<CR>
+
+nnoremap <silent> <SID>[unite]x :<C-u>Unite output:message<CR>
 
 if g:is_windows
   nnoremap <SID>[unite]m :<C-u>Unite file_mru everything/async -start-insert<CR>

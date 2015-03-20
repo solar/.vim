@@ -59,6 +59,7 @@ NeoBundle 'dotcloud/docker',
             \ {'rtp': '~/.vim/bundle/docker/contrib/syntax/vim'}
 NeoBundle 'fatih/vim-go'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'chase/vim-ansible-yaml'
 
 " colorschemes
 NeoBundle 'jonathanfilip/vim-lucius'
