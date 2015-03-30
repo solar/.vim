@@ -23,7 +23,6 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 set backspace=indent,eol,start
-set showmatch
 set wrapscan
 set wildmenu
 set tags=tags;
@@ -34,3 +33,6 @@ set backup
 let &backupdir=g:user_tmpdir . '/backup'
 
 let &undodir=g:user_tmpdir . '/undo'
+
+set showmatch
+let loaded_matchparen = 1

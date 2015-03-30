@@ -67,6 +67,8 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'altercation/vim-colors-solarized'
 
+NeoBundleLocal $HOME/.vim/local
+
 call neobundle#end()
 
 filetype plugin indent on
