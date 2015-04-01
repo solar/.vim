@@ -17,9 +17,9 @@ nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expan
 nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
 
 nnoremap <silent> <SID>[unite]f
-        \ :<C-u>Unite -buffer-name=files -no-split
+        \ :<C-u>UniteWithProjectDir -buffer-name=files -no-split
         \ jump_point file_point buffer
-        \ file_rec/async file file/new<CR>
+        \ rec/async file file/new<CR>
 
 nnoremap <silent> <SID>[unite]x :<C-u>Unite output:message<CR>
 
