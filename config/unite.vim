@@ -19,7 +19,7 @@ nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
 nnoremap <silent> <SID>[unite]f
         \ :<C-u>UniteWithProjectDir -buffer-name=files -no-split
         \ jump_point file_point buffer
-        \ rec/async file file/new<CR>
+        \ file_rec/async file file/new<CR>
 
 nnoremap <silent> <SID>[unite]x :<C-u>Unite output:message<CR>
 
