@@ -3,5 +3,5 @@ set nomousefocus
 set nomousehide
 
 if !has('gui_running') && has('xterm_clipboard')
-    set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
+    set clipboard^=unnamedplus
 endif

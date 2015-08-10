@@ -3,8 +3,6 @@
 " '         - unite
 " <Space>q  - quickfix
 
-let maplerader = '-'
-
 nnoremap <C-E> g<C-]>
 
 nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
@@ -23,10 +21,6 @@ nnoremap gk k
 
 " ハイライト消去
 noremap <Esc><Esc> :<C-u>nohlsearch<CR>
-
-" レジスタ・マーク
-nnoremap <Space>m   :<C-u>Unite marks<CR>
-nnoremap <Space>r   :<C-u>Unite register<CR>
 
 " 最後に編集した場所
 nnoremap gc `[v`]
@@ -90,3 +84,25 @@ nnoremap Y y$
 " Quickfix
 nnoremap <Space>qn :<C-u>cnext<CR>
 nnoremap <Space>qN :<C-u>cNext<CR>
+
+" vim-smartword
+map w <Plug>(smartword-w)
+map b <Plug>(smartword-b)
+map e <Plug>(smartword-e)
+map ge <Plug>(smartword-ge)
+noremap ,w w
+noremap ,b b
+noremap ,e e
+noremap ,ge ge
+
+" surround
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
+
+nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+
+nmap <silent>sdb <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+nmap <silent>srb <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+

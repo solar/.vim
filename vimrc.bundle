@@ -7,15 +7,42 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundleLazy 'kana/vim-smartword', {
+            \   'autoload' : {
+            \       'mappings' : [
+            \           '<Plug>(smartword-'
+            \       ]
+            \   }
+            \ }
+
+NeoBundleLazy 'Shougo/vimfiler', {
+          \ 'depends' : 'Shougo/unite.vim',
+          \ 'autoload' : {
+          \    'commands' : [{ 'name' : 'VimFiler',
+          \                    'complete' : 'customlist,vimfiler#complete' },
+          \                  'VimFilerExplorer',
+          \                  'Edit', 'Read', 'Source', 'Write'],
+          \    'mappings' : '<Plug>',
+          \    'explorer' : 1,
+          \ }
+          \ }
+
+NeoBundleLazy 'Shougo/unite.vim', {
+            \ 'autoload': { 'commands': [ 'Unite' ] }
+            \ }
+
+NeoBundle 'basyura/TweetVim', { 'depends' :
+            \ ['basyura/twibill.vim', 'tyru/open-browser.vim'] }
+
+NeoBundle 'rhysd/vim-operator-surround', { 'depends': 'kana/vim-operator-user' }
+
 NeoBundle 'Align'
-NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
             \ 'build': {
             \   'cygwin': 'make -f make_cygwin.mak',
@@ -25,21 +52,34 @@ NeoBundle 'Shougo/vimproc', {
             \}
 " \   'windows': 'make -f make_mingw32.mak',
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
+NeoBundle 'thinca/vim-textobj-between', { 'depends': 'kana/vim-textobj-user' }
+NeoBundle 'rhysd/vim-textobj-anyblock', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'sgur/unite-qf'
-NeoBundle 'tacroe/unite-mark'
+NeoBundleLazy 'sgur/unite-qf', {
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload': { 'commands': [ 'Unite' ] }
+            \ }
+NeoBundleLazy 'tacroe/unite-mark', {
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload': { 'commands': [ 'Unite' ] }
+            \ }
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'tsukkee/unite-tag'
+
+NeoBundleLazy 'tsukkee/unite-help', {
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload': { 'commands': [ 'Unite' ] }
+            \ }
+NeoBundleLazy 'tsukkee/unite-tag', {
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload': { 'commands': [ 'Unite' ] }
+            \ }
+
 NeoBundle 'xmledit'
 NeoBundle 'sgur/unite-everything'
 NeoBundle 'tyru/open-browser.vim'
