@@ -1,0 +1,12 @@
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 1
+
+inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <expr><C-h>    deoplete#mappings#smart_close_popup() . "\<C-h>"
+inoremap <expr><CR>   pumvisible() ? "\<C-y>" : "\<CR>"
+
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer']
+let g:deoplete#sources.scala = ['buffer', 'file', 'tag']
+
+" vim: ft=vim

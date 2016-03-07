@@ -5,8 +5,13 @@
 
 nnoremap <C-E> g<C-]>
 
-nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
-nnoremap <Space>s. :<C-u>source $MYVIMRC<CR>
+if has('nvim')
+    nnoremap <Space>. :<C-u>edit $HOME/.config/nvim/init.vim<CR>
+    nnoremap <Space>s. :<C-u>source $HOME/.config/nvim/init.vim<CR>
+else
+    nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
+    nnoremap <Space>s. :<C-u>source $MYVIMRC<CR>
+endif
 
 " 不要なキーマップを無効化
 nnoremap ZZ <Nop>
@@ -52,6 +57,11 @@ nnoremap <SID>[tag]t <C-]>
 nnoremap <SID>[tag]j :<C-u>tag<CR>
 nnoremap <SID>[tag]k :<C-u>pop<CR>
 nnoremap <SID>[tag]l :<C-u>tags<CR>
+nnoremap <SID>[tag]n :<C-u>tnext<CR>
+nnoremap <SID>[tag]p :<C-u>tprev<CR>
+nnoremap <SID>[tag]pt <C-w>]
+nnoremap <SID>[tag]pn :<C-u>ptnext<CR>
+nnoremap <SID>[tag]pp :<C-u>ptprevious<CR>
 
 " ウィンドウ移動
 nnoremap sj <C-w>j

@@ -1,5 +1,10 @@
-source $HOME/.vim/config/neocomplete.vim
-source $HOME/.vim/config/neosnippet.vim
+if has('nvim')
+    source $HOME/.config/nvim/config/deoplete.nvim
+else
+    source $HOME/.vim/config/neocomplete.vim
+    source $HOME/.vim/config/neosnippet.vim
+endif
+
 source $HOME/.vim/config/unite.vim
 source $HOME/.vim/config/fugitive.vim
 source $HOME/.vim/config/lightline.vim
@@ -11,3 +16,4 @@ source $HOME/.vim/config/format.vim
 source $HOME/.vim/config/eregex.vim
 source $HOME/.vim/config/vim-go.vim
 source $HOME/.vim/config/tweetvim.vim
+source $HOME/.vim/config/ensime-vim.vim
